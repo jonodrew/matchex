@@ -1,6 +1,7 @@
 import csv
+import numpy
 
-with open('postings.csv','rb') as f:
+with open('/Users/Jonathan/Google Drive/CPD/Python/postings.csv','r') as f:
     reader = csv.reader(f)
     postings = list(reader)
     #print(preferences)
@@ -18,44 +19,70 @@ for lists in postings:
 """
 #print(postDept,postSkills,postAnchor,postCompetencies,postSecurity)
 
-with open('candidates.csv','rb') as f:
+with open('/Users/Jonathan/Google Drive/CPD/Python/candidates.csv','r') as f:
     reader = csv.reader(f)
     candidates = list(reader)
     #print(candidates)
 #for values in candidates:
+
+candName = [lists [0:1] for lists in candidates]
 candDept = [lists[14:24] for lists in candidates]
-candAnchor = [lists[2] for lists in candidates]
+candAnchor = [lists[7:10:2] for lists in candidates]
 candSkills = [lists[3:5] for lists in candidates]
 candLocation = [lists[5] for lists in candidates]
 candCompetencies = [lists[7:10] for lists in candidates]
 candSecurity = [lists[14:25] for lists in candidates]
-print(candDept)
+#print(candAnchor)
+#print(candName)
 
 """
-matrix = []
-def matchDept(p,c):
-    score = 0
-    if p == c:
-        score += 1
-    else:
-        score
+def matchAnchor():
+    matrix = []
+    for anchor in postAnchor:
+        score = 0
+        if anchor in items:
+            score += 1
+        else:
+            score += 0
     return score
-
-def match(p,c):
-    score = 0
-    if p == c:
-        score += 1
-    else:
-        score
-
-
-p = postings[0][1]
-c = candidates[7][1]
-for list in postings:
-    score = 0
-    #matchDept(p,c)
-    #match(postings[0][2],candidates[8][9])
     matrix.append(score)
-print(matrix)
-print (candidates[0])
+    print(matrix)
 """
+def matchDept():
+    #score = 0
+    #for each item in the list of posting departments...
+    jobMatch = []
+    for dept in postDept:
+        score = 0
+        if dept in depts:
+            score += 1
+        else:
+            score += 0
+        jobMatch.append(score)
+    deptMatrix.append(jobMatch)
+
+
+import itertools
+chain = itertools.chain(*candName)
+candName = list((chain))
+#print(candName)
+candScore = {item: [] for item in candName}
+#print(candScore)
+
+#for each chunk of "preferred departments..."
+deptMatrix = []
+for depts in candDept:
+    matchDept()
+    #jobMatch.append(deptMatrix)
+    #print(deptMatrix)
+
+print(deptMatrix)
+
+"""
+for items in candAnchor:
+    matchAnchor()
+"""
+#print(matrix)
+#print(candDept,postDept)
+
+#import numpy as np
