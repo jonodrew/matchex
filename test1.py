@@ -35,19 +35,18 @@ candSecurity = [lists[14:25] for lists in candidates]
 #print(candAnchor)
 #print(candName)
 
-"""
+
 def matchAnchor():
-    matrix = []
+    anchorMatch = []
     for anchor in postAnchor:
         score = 0
         if anchor in items:
             score += 1
         else:
             score += 0
-    return score
-    matrix.append(score)
-    print(matrix)
-"""
+        anchorMatch.append(score)
+    anchorMatrix.append(anchorMatch)
+
 def matchDept():
     #score = 0
     #for each item in the list of posting departments...
@@ -73,16 +72,15 @@ candScore = {item: [] for item in candName}
 deptMatrix = []
 for depts in candDept:
     matchDept()
-    #jobMatch.append(deptMatrix)
-    #print(deptMatrix)
-
 print(deptMatrix)
 
-"""
+anchorMatrix = []
 for items in candAnchor:
     matchAnchor()
+print(anchorMatrix)
 """
 #print(matrix)
 #print(candDept,postDept)
 
 #import numpy as np
+"""
