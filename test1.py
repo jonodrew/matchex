@@ -61,6 +61,7 @@ def matchDept():
     deptMatrix.append(jobMatch)
 
 
+
 import itertools
 chain = itertools.chain(*candName)
 candName = list((chain))
