@@ -2,7 +2,8 @@ import csv
 import numpy as np
 import itertools
 
-with open('/Users/Jonathan/Google Drive/CPD/Python/postings.csv','r') as f:
+with open('/Users/java_jonathan/postings.csv','r') as f:
+#with open('/Users/Jonathan/Google Drive/CPD/Python/postings.csv','r') as f:
     reader = csv.reader(f)
     postings = list(reader)
     #print(preferences)
@@ -16,7 +17,8 @@ postCompetencies = [lists[7:10] for lists in postings]
 postSecurity = [lists[10] for lists in postings]
 
 
-with open('/Users/Jonathan/Google Drive/CPD/Python/candidates.csv','r') as f:
+#with open('/Users/Jonathan/Google Drive/CPD/Python/candidates.csv','r') as f:
+with open('/Users/java_jonathan/candidates.csv','r') as f:
     reader = csv.reader(f)
     candidates = list(reader)
     #print(candidates)
