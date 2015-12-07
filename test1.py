@@ -1,5 +1,6 @@
 import csv
 import numpy as np
+import itertools
 
 with open('/Users/Jonathan/Google Drive/CPD/Python/postings.csv','r') as f:
     reader = csv.reader(f)
@@ -13,11 +14,7 @@ postSkills = [lists[3:5] for lists in postings]
 postLocation = [lists[5] for lists in postings]
 postCompetencies = [lists[7:10] for lists in postings]
 postSecurity = [lists[10] for lists in postings]
-"""
-for lists in postings:
-    dept.append(postings[0][0:1:10])
-"""
-#print(postDept,postSkills,postAnchor,postCompetencies,postSecurity)
+
 
 with open('/Users/Jonathan/Google Drive/CPD/Python/candidates.csv','r') as f:
     reader = csv.reader(f)
@@ -26,14 +23,18 @@ with open('/Users/Jonathan/Google Drive/CPD/Python/candidates.csv','r') as f:
 #for values in candidates:
 
 candName = [lists [0:1] for lists in candidates]
+
+chain = itertools.chain(*candName)
+candName = list((chain))
+candScore = {item: [] for item in candName}
+
 candDept = [lists[14:24] for lists in candidates]
 candAnchor = [lists[7:10:2] for lists in candidates]
 candSkills = [lists[3:5] for lists in candidates]
 candLocation = [lists[5] for lists in candidates]
 candCompetencies = [lists[7:10] for lists in candidates]
 candSecurity = [lists[27] for lists in candidates]
-#print(candAnchor)
-#print(candName)
+
 
 #print(candSecurity)
 def secValue(clearance):
@@ -55,9 +56,9 @@ def matchAnchor():
     for anchor in postAnchor:
         score = 0
         if anchor in items:
-            score += 1
+            score += 1.5
         else:
-            score += 0
+            score += 0.0
         anchorMatch.append(score)
     anchorMatrix.append(anchorMatch)
 
@@ -70,7 +71,7 @@ def matchDept():
         if dept in depts:
             score += 1
         else:
-            score += 0
+            score += 0.0
         jobMatch.append(score)
     deptMatrix.append(jobMatch)
 
@@ -79,18 +80,12 @@ def matchSec():
     for pSec in postSecurity:
         score = 0
         if pSec >= cSec:
-            score += 2
+            score += 1.0
         else:
-            score -= 10
+            score -= 0.0
         secMatch.append(score)
     secMatrix.append(secMatch)
 
-import itertools
-chain = itertools.chain(*candName)
-candName = list((chain))
-candScore = {item: [] for item in candName}
-
-#for each chunk of "preferred departments..."
 deptMatrix = []
 for depts in candDept:
     matchDept()
@@ -106,11 +101,6 @@ for cSec in candSecurity:
 deptMatrix = np.matrix(deptMatrix)
 anchorMatrix = np.matrix(anchorMatrix)
 secMatrix = np.matrix(secMatrix)
-print(secMatrix)
-#print(anchorMatrix + deptMatrix)
-"""
-#print(matrix)
-#print(candDept,postDept)
-
-#import numpy as np
-"""
+#print(secMatrix)
+totalMatrix = deptMatrix + anchorMatrix + secMatrix
+print(totalMatrix)
