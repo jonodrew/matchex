@@ -31,10 +31,24 @@ candAnchor = [lists[7:10:2] for lists in candidates]
 candSkills = [lists[3:5] for lists in candidates]
 candLocation = [lists[5] for lists in candidates]
 candCompetencies = [lists[7:10] for lists in candidates]
-candSecurity = [lists[14:25] for lists in candidates]
+candSecurity = [lists[27] for lists in candidates]
 #print(candAnchor)
 #print(candName)
 
+#print(candSecurity)
+def secValue(clearance):
+    for n,i in enumerate(clearance):
+        if i == 'SC':
+            clearance[n] = 3
+        elif i == 'DV':
+            clearance[n] = 4
+        elif i == 'CTC':
+            clearance[n] = 2
+        else:
+            clearance[n] = 1
+secValue(candSecurity)
+secValue(postSecurity)
+#print(candSecurity)
 
 def matchAnchor():
     anchorMatch = []
@@ -60,7 +74,16 @@ def matchDept():
         jobMatch.append(score)
     deptMatrix.append(jobMatch)
 
-
+def matchSec():
+    secMatch = []
+    for pSec in postSecurity:
+        score = 0
+        if pSec >= cSec:
+            score += 2
+        else:
+            score -= 10
+        secMatch.append(score)
+    secMatrix.append(secMatch)
 
 import itertools
 chain = itertools.chain(*candName)
@@ -76,10 +99,15 @@ anchorMatrix = []
 for items in candAnchor:
     matchAnchor()
 
+secMatrix = []
+for cSec in candSecurity:
+    matchSec()
 
 deptMatrix = np.matrix(deptMatrix)
 anchorMatrix = np.matrix(anchorMatrix)
-print(anchorMatrix + deptMatrix)
+secMatrix = np.matrix(secMatrix)
+print(secMatrix)
+#print(anchorMatrix + deptMatrix)
 """
 #print(matrix)
 #print(candDept,postDept)
