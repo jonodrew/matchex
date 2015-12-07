@@ -1,5 +1,5 @@
 import csv
-import numpy
+import numpy as np
 
 with open('/Users/Jonathan/Google Drive/CPD/Python/postings.csv','r') as f:
     reader = csv.reader(f)
@@ -72,12 +72,19 @@ candScore = {item: [] for item in candName}
 deptMatrix = []
 for depts in candDept:
     matchDept()
-print(deptMatrix)
+    deptMatrix = np.matrix(deptMatrix)
+#print(deptMatrix)
 
 anchorMatrix = []
 for items in candAnchor:
     matchAnchor()
-print(anchorMatrix)
+    anchorMatrix = np.matrix(anchorMatrix)
+#print(anchorMatrix)
+
+#print(anchorMatrix + deptMatrix)
+
+
+#print(anchorMatrix)
 """
 #print(matrix)
 #print(candDept,postDept)
