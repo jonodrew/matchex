@@ -64,27 +64,21 @@ def matchDept():
 import itertools
 chain = itertools.chain(*candName)
 candName = list((chain))
-#print(candName)
 candScore = {item: [] for item in candName}
-#print(candScore)
 
 #for each chunk of "preferred departments..."
 deptMatrix = []
 for depts in candDept:
     matchDept()
-    deptMatrix = np.matrix(deptMatrix)
-#print(deptMatrix)
 
 anchorMatrix = []
 for items in candAnchor:
     matchAnchor()
-    anchorMatrix = np.matrix(anchorMatrix)
-#print(anchorMatrix)
-
-#print(anchorMatrix + deptMatrix)
 
 
-#print(anchorMatrix)
+deptMatrix = np.matrix(deptMatrix)
+anchorMatrix = np.matrix(anchorMatrix)
+print(anchorMatrix + deptMatrix)
 """
 #print(matrix)
 #print(candDept,postDept)
