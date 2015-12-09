@@ -1,9 +1,11 @@
 import csv
 import numpy as np
 import itertools
+from munkres import Munkres, print_matrix
+import sys
 
-with open('/Users/java_jonathan/postings.csv','r') as f:
-#with open('/Users/Jonathan/Google Drive/CPD/Python/postings.csv','r') as f:
+#with open('/Users/java_jonathan/postings.csv','r') as f:
+with open('/Users/Jonathan/Google Drive/CPD/Python/postings.csv','r') as f:
     reader = csv.reader(f)
     postings = list(reader)
     #print(preferences)
@@ -17,8 +19,8 @@ postCompetencies = [lists[7:10] for lists in postings]
 postSecurity = [lists[10] for lists in postings]
 
 
-#with open('/Users/Jonathan/Google Drive/CPD/Python/candidates.csv','r') as f:
-with open('/Users/java_jonathan/candidates.csv','r') as f:
+with open('/Users/Jonathan/Google Drive/CPD/Python/candidates.csv','r') as f:
+#with open('/Users/java_jonathan/candidates.csv','r') as f:
     reader = csv.reader(f)
     candidates = list(reader)
     #print(candidates)
@@ -106,3 +108,21 @@ secMatrix = np.matrix(secMatrix)
 #print(secMatrix)
 totalMatrix = deptMatrix + anchorMatrix + secMatrix
 print(totalMatrix)
+
+cost_matrix = []
+for row in totalMatrix:
+    cost_row = []
+    for col in row:
+        cost_row += [sys.maxsize - col]
+    cost_matrix += [cost_row]
+
+m = Munkres()
+indexes = m.compute(cost_matrix)
+print_matrix(totalMatrix, msg='Highest profit through this matrix:')
+total = 0
+for row, column in indexes:
+    value = totalMatrix[row][column]
+    total += value
+    print("%d, %d -> %d" % (row, column, value))
+
+print("total profit= %d" % (total))
