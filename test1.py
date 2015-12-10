@@ -1,5 +1,5 @@
 import csv
-import numpy as np
+#import numpy as np
 import itertools
 from munkres import Munkres, print_matrix
 import sys
@@ -93,7 +93,7 @@ def matchSec():
 deptMatrix = []
 for depts in candDept:
     matchDept()
-
+print(deptMatrix)
 anchorMatrix = []
 for items in candAnchor:
     matchAnchor()
@@ -102,15 +102,14 @@ secMatrix = []
 for cSec in candSecurity:
     matchSec()
 
-deptMatrix = np.matrix(deptMatrix)
-anchorMatrix = np.matrix(anchorMatrix)
-secMatrix = np.matrix(secMatrix)
-#print(secMatrix)
-totalMatrix = deptMatrix + anchorMatrix + secMatrix
-print(totalMatrix)
+#deptMatrix = np.matrix(deptMatrix)
+#anchorMatrix = np.matrix(anchorMatrix)
+#secMatrix = np.matrix(secMatrix)
+#totalMatrix = deptMatrix + anchorMatrix + secMatrix
+#print(totalMatrix)
 
 cost_matrix = []
-for row in totalMatrix:
+for row in deptMatrix:
     cost_row = []
     for col in row:
         cost_row += [sys.maxsize - col]
@@ -118,11 +117,15 @@ for row in totalMatrix:
 
 m = Munkres()
 indexes = m.compute(cost_matrix)
-print_matrix(totalMatrix, msg='Highest profit through this matrix:')
+print_matrix(deptMatrix, msg='Highest profit through this matrix:')
 total = 0
 for row, column in indexes:
-    value = totalMatrix[row][column]
+    value = deptMatrix[row][column]
     total += value
     print("%d, %d -> %d" % (row, column, value))
 
 print("total profit= %d" % (total))
+"""
+print(max(totalMatrix))
+print(totalMatrix.max(axis = 1))
+"""
