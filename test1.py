@@ -108,8 +108,7 @@ deptMatrix = np.matrix(deptMatrix)
 anchorMatrix = np.matrix(anchorMatrix)
 secMatrix = np.matrix(secMatrix)
 totalMatrix = deptMatrix + anchorMatrix + secMatrix
-#print(totalMatrix)
-#print(totalMatrix[0])
+
 #now to select each job row:
 
 
@@ -120,43 +119,31 @@ totalMatrix = deptMatrix + anchorMatrix + secMatrix
 
 #gives first column ie candidate a
 a=totalMatrix[:,[0]]
-print(a)
-"""
-print(a)
-list(np.array(a).reshape(-1,))
-print(a)
-"""
+#b = totalMatrix[:,[0]]
+#print(a)
+#converts 1D matrix to list for ease
 a = np.array(a).tolist()
-print(a)
-for a, b in zip(a, postCode):
-    print(a,b)
-
-"""
-a = [lists[0] for lists in totalMatrix]
-print(a)
-
-
+#print(a)
+#creates list called output containing rank of score
 output = [0] * len(a)
 for i, x in enumerate(sorted(range(len(a)), key=lambda y: a[y])):
     output[x] = i
 print(output)
+#creates tuples of rank, job and appends to list
+jobRank = []
+for rank, b in zip(output, postCode):
+    jobScore = (rank,b)
+    list(jobScore)
+    jobRank.append(jobScore)
+print(jobRank)
 
-
-cost_matrix = []
-for row in deptMatrix:
-    cost_row = []
-    for col in row:
-        cost_row += [sys.maxsize - col]
-    cost_matrix += [cost_row]
-
-m = Munkres()
-indexes = m.compute(cost_matrix)
-print_matrix(deptMatrix, msg='Highest profit through this matrix:')
-total = 0
-for row, column in indexes:
-    value = deptMatrix[row][column]
-    total += value
-    print("%d, %d -> %d" % (row, column, value))
-
-print("total profit= %d" % (total))
 """
+output = [0] * len(a)
+for i, x in enumerate(sorted(range(len(a)), key=lambda y: a[y])):
+    output[x] = i
+print(output)
+"""
+#print(a)
+jobRank = sorted(jobRank, reverse=False)
+print(jobRank)
+print('For candidate a, the best position is %s') % (jobRank[0][1])
