@@ -11,6 +11,7 @@ with open('/Users/java_jonathan/postings.csv','r') as f:
     #print(preferences)
 #print(postings)
 #split up files into relative blocks
+postCode = [lists[0] for lists in postings]
 postDept = [lists[1] for lists in postings]
 postAnchor = [lists[2] for lists in postings]
 postSkills = [lists[3:5] for lists in postings]
@@ -101,7 +102,7 @@ for items in candAnchor:
 secMatrix = []
 for cSec in candSecurity:
     matchSec()
-
+#turn lists of lists into np matrices
 deptMatrix = np.matrix(deptMatrix)
 anchorMatrix = np.matrix(anchorMatrix)
 secMatrix = np.matrix(secMatrix)
@@ -109,14 +110,20 @@ totalMatrix = deptMatrix + anchorMatrix + secMatrix
 print(totalMatrix)
 print(totalMatrix.T)
 
+#gives first column ie candidate a
 a=totalMatrix[:,[0]]
+np.array(a).flatten().tolist()
 print(a)
+for a, b in zip(a, postCode):
+    print(a,b)
+
+"""
 output = [0] * len(a)
 for i, x in enumerate(sorted(range(len(a)), key=lambda y: a[y])):
     output[x] = i
 print(output)
 
-"""
+
 cost_matrix = []
 for row in deptMatrix:
     cost_row = []
