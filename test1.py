@@ -1,11 +1,11 @@
 import csv
-#import numpy as np
+import numpy as np
 import itertools
 from munkres import Munkres, print_matrix
 import sys
 
-#with open('/Users/java_jonathan/postings.csv','r') as f:
-with open('/Users/Jonathan/Google Drive/CPD/Python/postings.csv','r') as f:
+with open('/Users/java_jonathan/postings.csv','r') as f:
+#with open('/Users/Jonathan/Google Drive/CPD/Python/postings.csv','r') as f:
     reader = csv.reader(f)
     postings = list(reader)
     #print(preferences)
@@ -19,8 +19,8 @@ postCompetencies = [lists[7:10] for lists in postings]
 postSecurity = [lists[10] for lists in postings]
 
 
-with open('/Users/Jonathan/Google Drive/CPD/Python/candidates.csv','r') as f:
-#with open('/Users/java_jonathan/candidates.csv','r') as f:
+#with open('/Users/Jonathan/Google Drive/CPD/Python/candidates.csv','r') as f:
+with open('/Users/java_jonathan/candidates.csv','r') as f:
     reader = csv.reader(f)
     candidates = list(reader)
     #print(candidates)
@@ -93,7 +93,7 @@ def matchSec():
 deptMatrix = []
 for depts in candDept:
     matchDept()
-print(deptMatrix)
+
 anchorMatrix = []
 for items in candAnchor:
     matchAnchor()
@@ -102,12 +102,21 @@ secMatrix = []
 for cSec in candSecurity:
     matchSec()
 
-#deptMatrix = np.matrix(deptMatrix)
-#anchorMatrix = np.matrix(anchorMatrix)
-#secMatrix = np.matrix(secMatrix)
-#totalMatrix = deptMatrix + anchorMatrix + secMatrix
-#print(totalMatrix)
+deptMatrix = np.matrix(deptMatrix)
+anchorMatrix = np.matrix(anchorMatrix)
+secMatrix = np.matrix(secMatrix)
+totalMatrix = deptMatrix + anchorMatrix + secMatrix
+print(totalMatrix)
+print(totalMatrix.T)
 
+a=totalMatrix[:,[0]]
+print(a)
+output = [0] * len(a)
+for i, x in enumerate(sorted(range(len(a)), key=lambda y: a[y])):
+    output[x] = i
+print(output)
+
+"""
 cost_matrix = []
 for row in deptMatrix:
     cost_row = []
@@ -125,7 +134,4 @@ for row, column in indexes:
     print("%d, %d -> %d" % (row, column, value))
 
 print("total profit= %d" % (total))
-"""
-print(max(totalMatrix))
-print(totalMatrix.max(axis = 1))
 """
