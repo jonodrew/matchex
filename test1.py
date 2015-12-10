@@ -103,21 +103,39 @@ secMatrix = []
 for cSec in candSecurity:
     matchSec()
 #turn lists of lists into np matrices
+
 deptMatrix = np.matrix(deptMatrix)
 anchorMatrix = np.matrix(anchorMatrix)
 secMatrix = np.matrix(secMatrix)
 totalMatrix = deptMatrix + anchorMatrix + secMatrix
-print(totalMatrix)
-print(totalMatrix.T)
+#print(totalMatrix)
+#print(totalMatrix[0])
+#now to select each job row:
+
+
+
+
+
+#print(totalMatrix.T)
 
 #gives first column ie candidate a
 a=totalMatrix[:,[0]]
-np.array(a).flatten().tolist()
+print(a)
+"""
+print(a)
+list(np.array(a).reshape(-1,))
+print(a)
+"""
+a = np.array(a).tolist()
 print(a)
 for a, b in zip(a, postCode):
     print(a,b)
 
 """
+a = [lists[0] for lists in totalMatrix]
+print(a)
+
+
 output = [0] * len(a)
 for i, x in enumerate(sorted(range(len(a)), key=lambda y: a[y])):
     output[x] = i
