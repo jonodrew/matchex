@@ -3,6 +3,8 @@ import numpy as np
 import itertools
 from munkres import Munkres, print_matrix
 import sys
+from classes import *
+from functions import *
 
 with open('/Users/java_jonathan/postings.csv','r') as f:
 #with open('/Users/Jonathan/Google Drive/CPD/Python/postings.csv','r') as f:
@@ -41,17 +43,6 @@ candCompetencies = [lists[7:10] for lists in candidates]
 candSecurity = [lists[27] for lists in candidates]
 
 
-#print(candSecurity)
-def secValue(clearance):
-    for n,i in enumerate(clearance):
-        if i == 'SC':
-            clearance[n] = 3
-        elif i == 'DV':
-            clearance[n] = 4
-        elif i == 'CTC':
-            clearance[n] = 2
-        else:
-            clearance[n] = 1
 secValue(candSecurity)
 secValue(postSecurity)
 #print(candSecurity)
@@ -147,3 +138,4 @@ print(output)
 jobRank = sorted(jobRank, reverse=False)
 print(jobRank)
 print('For candidate a, the best position is %s') % (jobRank[0][1])
+print(candidate[0].skills)
