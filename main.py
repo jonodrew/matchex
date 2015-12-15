@@ -12,12 +12,15 @@ with open('/Users/java_jonathan/postings.csv','r') as f:
     postingsAll = list(reader)
     #print(postingsAll)
     #print(postingsAll)
-with open('/Users/java_jonathan/candidates.csv','r') as f:
+with open('/Users/java_jonathan/candidates_lge.csv','r') as f:
     reader = csv.reader(f)
-    candidatesAll = [tuple(line) for line in csv.reader(f)]
-for list in postingsAll:
-    posting = Posting(*list)
-    print(posting.name)
+    candidatesAll = list(reader)
+
+#iterates over lists and produces the names of each candidate
+for list in candidatesAll:
+    candidate = Candidate(*list)
+    print(candidate.name)
+    print(candidate.priorDepartment)
 #posting = [Posting(*postingsAll)]
 #print(posting[0].anchor)
 #print(posting)
