@@ -9,10 +9,25 @@ from functions import *
 with open('/Users/java_jonathan/postings.csv','r') as f:
 #with open('/Users/Jonathan/Google Drive/CPD/Python/postings.csv','r') as f:
     reader = csv.reader(f)
-    postings = list(reader)
+    postingsAll = list(reader)
+    #print(postingsAll)
+    #print(postingsAll)
+with open('/Users/java_jonathan/candidates.csv','r') as f:
+    reader = csv.reader(f)
+    candidatesAll = [tuple(line) for line in csv.reader(f)]
+for list in postingsAll:
+    posting = Posting(*list)
+    print(posting.name)
+#posting = [Posting(*postingsAll)]
+#print(posting[0].anchor)
+#print(posting)
+#print(candidatesAll)
+#print(postingsAll)
+#print(postingsAll[0].name)
     #print(preferences)
 #print(postings)
 #split up files into relative blocks
+"""
 postCode = [lists[0] for lists in postings]
 postDept = [lists[1] for lists in postings]
 postAnchor = [lists[2] for lists in postings]
@@ -20,15 +35,16 @@ postSkills = [lists[3:5] for lists in postings]
 postLocation = [lists[5] for lists in postings]
 postCompetencies = [lists[7:10] for lists in postings]
 postSecurity = [lists[10] for lists in postings]
-
+"""
 
 #with open('/Users/Jonathan/Google Drive/CPD/Python/candidates.csv','r') as f:
-with open('/Users/java_jonathan/candidates.csv','r') as f:
-    reader = csv.reader(f)
-    candidates = list(reader)
+
     #print(candidates)
 #for values in candidates:
+#print(candidates)
+#print(postingsAll)
 
+"""
 candName = [lists [0:1] for lists in candidates]
 
 chain = itertools.chain(*candName)
@@ -45,31 +61,11 @@ candSecurity = [lists[27] for lists in candidates]
 
 secValue(candSecurity)
 secValue(postSecurity)
+matchAnchor()
 #print(candSecurity)
+"""
 
-def matchAnchor():
-    anchorMatch = []
-    for anchor in postAnchor:
-        score = 0
-        if anchor in items:
-            score += 1.5
-        else:
-            score += 0.0
-        anchorMatch.append(score)
-    anchorMatrix.append(anchorMatch)
-
-def matchDept():
-    #score = 0
-    #for each item in the list of posting departments...
-    jobMatch = []
-    for dept in postDept:
-        score = 0
-        if dept in depts:
-            score += 1
-        else:
-            score += 0.0
-        jobMatch.append(score)
-    deptMatrix.append(jobMatch)
+"""
 
 def matchSec():
     secMatch = []
@@ -100,7 +96,6 @@ anchorMatrix = np.matrix(anchorMatrix)
 secMatrix = np.matrix(secMatrix)
 totalMatrix = deptMatrix + anchorMatrix + secMatrix
 
-#now to select each job row:
 
 
 
@@ -128,14 +123,15 @@ for rank, b in zip(output, postCode):
     jobRank.append(jobScore)
 print(jobRank)
 
-"""
+
 output = [0] * len(a)
 for i, x in enumerate(sorted(range(len(a)), key=lambda y: a[y])):
     output[x] = i
 print(output)
-"""
+
 #print(a)
 jobRank = sorted(jobRank, reverse=False)
 print(jobRank)
 print('For candidate a, the best position is %s') % (jobRank[0][1])
 print(candidate[0].skills)
+"""

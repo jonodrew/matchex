@@ -1,0 +1,2 @@
+create a class for the posting template and a class for the candidate
+iterate over the csv file and initiate the class for each candidate
