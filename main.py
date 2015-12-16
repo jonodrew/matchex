@@ -6,25 +6,62 @@ import sys
 from classes import *
 from functions import *
 
-with open('/Users/java_jonathan/postings_lge.csv','r') as f:
+with open('/Users/java_jonathan/postings.csv','r') as f:
 #with open('/Users/Jonathan/Google Drive/CPD/Python/postings.csv','r') as f:
     reader = csv.reader(f)
     postingsAll = list(reader)
 
-with open('/Users/java_jonathan/candidates_lge.csv','r') as f:
+with open('/Users/java_jonathan/candidates.csv','r') as f:
     reader = csv.reader(f)
     candidatesAll = list(reader)
 
 #iterates over lists and produces the names of each candidate
 for list in candidatesAll:
     candidate = Candidate(*list)
-    print(candidate.name)
-    print(candidate.priorDepartment)
+    #print(candidate.name)
+    #print(candidate.priorDepartment)
 
-for list in postingsAll:
-    posting = Posting(*list)
-    print(posting.name)
-    print(posting.department)
+#need to turn this into a function and move it across to functions module
+deptMatrix = []
+for list in candidatesAll:
+    candidate = Candidate(*list)
+    deptMatch = []
+    for list in postingsAll:
+        posting = Posting(*list)
+        score = 0.0
+        if posting.department == candidate.wantedDept1:
+            score += 1
+        elif posting.department == candidate.wantedDept2:
+            score += .9
+        elif posting.department == candidate.wantedDept3:
+            score += .8
+        elif posting.department == candidate.wantedDept4:
+            score += .7
+        elif posting.department == candidate.wantedDept5:
+            score += .6
+        elif posting.department == candidate.wantedDept6:
+            score += .5
+        elif posting.department == candidate.wantedDept7:
+            score += .4
+        elif posting.department == candidate.wantedDept8:
+            score += .3
+        elif posting.department == candidate.wantedDept9:
+            score += .2
+        elif posting.department == candidate.wantedDept10:
+            score += .1
+        else:
+            score += 0
+        print(score)
+        deptMatch.append(score)
+    deptMatrix.append(deptMatch)
+deptMatrix = np.matrix(deptMatrix)
+print(deptMatrix)
+deptMatrix * 2
+print(deptMatrix)
+
+    #print(posting.name)
+    #print(posting.department)
+
 
 #posting = [Posting(*postingsAll)]
 #print(posting[0].anchor)
@@ -47,24 +84,8 @@ postSecurity = [lists[10] for lists in postings]
 
 #with open('/Users/Jonathan/Google Drive/CPD/Python/candidates.csv','r') as f:
 
-    #print(candidates)
-#for values in candidates:
-#print(candidates)
-#print(postingsAll)
-
 """
-candName = [lists [0:1] for lists in candidates]
 
-chain = itertools.chain(*candName)
-candName = list((chain))
-candScore = {item: [] for item in candName}
-
-candDept = [lists[14:24] for lists in candidates]
-candAnchor = [lists[7:10:2] for lists in candidates]
-candSkills = [lists[3:5] for lists in candidates]
-candLocation = [lists[5] for lists in candidates]
-candCompetencies = [lists[7:10] for lists in candidates]
-candSecurity = [lists[27] for lists in candidates]
 
 
 secValue(candSecurity)
@@ -99,7 +120,10 @@ for cSec in candSecurity:
     matchSec()
 #turn lists of lists into np matrices
 
-deptMatrix = np.matrix(deptMatrix)
+
+
+
+
 anchorMatrix = np.matrix(anchorMatrix)
 secMatrix = np.matrix(secMatrix)
 totalMatrix = deptMatrix + anchorMatrix + secMatrix

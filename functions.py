@@ -11,7 +11,8 @@ def secValue(clearance):
             clearance[n] = 1
 
 #function scores anchor match
-def matchAnchor(anchorSkill):
+
+def matchAnchor(skill):
     anchorMatch = []
     for anchor in anchorSkill:
         score = 0
@@ -23,16 +24,12 @@ def matchAnchor(anchorSkill):
         anchorMatch.append(score)
     #add candidate's anchor match list to the global matrix
     anchorMatrix.append(anchorMatch)
-
+"""
 #function scores department match
-def matchDept():
+def matchDept(candDept,postDept):
     #for each item in the list of posting departments...
     jobMatch = []
-    for dept in postDept:
-        score = 0
-        if dept in depts:
-            score += 1
-        else:
-            score += 0.0
+    if candDept
         jobMatch.append(score)
     deptMatrix.append(jobMatch)
+"""
