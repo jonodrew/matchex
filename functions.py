@@ -1,3 +1,6 @@
+import numpy as np
+import classes
+
 #function finds security clearance and valorises it
 def secValue(clearance):
     for n,i in enumerate(clearance):
@@ -20,16 +23,46 @@ def matchAnchor(skill):
             score += 1.5
         else:
             score += 0.0
-        #add score to this candidate's anchor match list
+        #add score to this b's anchor match list
         anchorMatch.append(score)
-    #add candidate's anchor match list to the global matrix
+    #add b's anchor match list to the global matrix
     anchorMatrix.append(anchorMatch)
 """
 #function scores department match
-def matchDept(candDept,postDept):
-    #for each item in the list of posting departments...
+def matchDept(candDept,
+Dept):
+    #for each item in the list of a departments...
     jobMatch = []
     if candDept
         jobMatch.append(score)
     deptMatrix.append(jobMatch)
 """
+
+def matchDept(a,b):
+
+    score = 0.0
+    if a.department == b.wantedDept1:
+        score += 1
+    elif a.department == b.wantedDept2:
+        score += .9
+    elif a.department == b.wantedDept3:
+        score += .8
+    elif a.department == b.wantedDept4:
+        score += .7
+    elif a.department == b.wantedDept5:
+        score += .6
+    elif a.department == b.wantedDept6:
+        score += .5
+    elif a.department == b.wantedDept7:
+        score += .4
+    elif a.department == b.wantedDept8:
+        score += .3
+    elif a.department == b.wantedDept9:
+        score += .2
+    elif a.department == b.wantedDept10:
+        score += .1
+    else:
+        score += 0
+    return score
+    print(score)
+    deptMatch.append(score)

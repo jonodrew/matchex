@@ -1,4 +1,4 @@
-class Candidate:
+class Candidate(object):
 
     def __init__(self, name, priorDepartment, priorAnchor, priorSkill1,
     priorSkill2, priorLocation, XX, wantedAnchor, wantedSkill1,
@@ -34,6 +34,9 @@ class Candidate:
         self.wantedLocation = wantedLocation
         self.restrictions = restrictions
         self.security = security
+
+    
+
 """
 Jamie = ["Jamie", 'HMRC', 'Operational', 'Delivery, Digital', 'CTC']
 Jonathan = ["Jonathan", 'DWP', 'Operational', 'Delivery', 'CTC']
@@ -43,7 +46,7 @@ candidate = [Candidate(*Jamie),
 #print(candidate[0].skills)
 #print(candidate[1].name)
 
-class Posting:
+class Posting(object):
 
     def __init__(self, code, department, anchor, skill1, skill2, location, name,
     competency1, competency2, competency3, security):

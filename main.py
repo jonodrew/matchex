@@ -20,6 +20,8 @@ for list in candidatesAll:
     candidate = Candidate(*list)
     #print(candidate.name)
     #print(candidate.priorDepartment)
+for list in postingsAll:
+    posting = Posting(*list)
 
 #need to turn this into a function and move it across to functions module
 deptMatrix = []
@@ -56,8 +58,19 @@ for list in candidatesAll:
     deptMatrix.append(deptMatch)
 deptMatrix = np.matrix(deptMatrix)
 print(deptMatrix)
-deptMatrix * 2
+for item in deptMatrix:
+    item * 2
 print(deptMatrix)
+"""
+for list in postingsAll:
+    deptMatrix = []
+    posting = Posting(*list)
+    for list in candidatesAll:
+        deptMatch = []
+        candidate = Candidate(*list)
+        matchDept(posting,candidate)
+        print(deptMatch)
+
 
     #print(posting.name)
     #print(posting.department)
@@ -72,7 +85,7 @@ print(deptMatrix)
     #print(preferences)
 #print(postings)
 #split up files into relative blocks
-"""
+
 postCode = [lists[0] for lists in postings]
 postDept = [lists[1] for lists in postings]
 postAnchor = [lists[2] for lists in postings]
