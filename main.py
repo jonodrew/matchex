@@ -23,46 +23,20 @@ for list in candidatesAll:
 for list in postingsAll:
     posting = Posting(*list)
 
-#need to turn this into a function and move it across to functions module
-#stores score for all m posts across all n candidates
 deptMatrix = []
 for list in candidatesAll:
     candidate = Candidate(*list)
     #stores score for each m posts across each candidate
     deptMatch = []
+
     for list in postingsAll:
-        #iterate through posts and scores departmental match
         posting = Posting(*list)
-        score = 0.0
-        if posting.department == candidate.wantedDept1:
-            score += 1
-        elif posting.department == candidate.wantedDept2:
-            score += .9
-        elif posting.department == candidate.wantedDept3:
-            score += .8
-        elif posting.department == candidate.wantedDept4:
-            score += .7
-        elif posting.department == candidate.wantedDept5:
-            score += .6
-        elif posting.department == candidate.wantedDept6:
-            score += .5
-        elif posting.department == candidate.wantedDept7:
-            score += .4
-        elif posting.department == candidate.wantedDept8:
-            score += .3
-        elif posting.department == candidate.wantedDept9:
-            score += .2
-        elif posting.department == candidate.wantedDept10:
-            score += .1
-        else:
-            score += 0
-        #add score to list of candidate's departmental matches
+        score = matchDept(posting,candidate,score)
         deptMatch.append(score)
-    #add candidate's list of scores to matrix
     deptMatrix.append(deptMatch)
-#convert list of lists into numpy matrix
 deptMatrix = np.matrix(deptMatrix)
 print(deptMatrix)
+    #print(deptMatch)
 
 """
 for list in postingsAll:

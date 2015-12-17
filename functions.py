@@ -2,6 +2,7 @@ import numpy as np
 import classes
 
 #function finds security clearance and valorises it
+score = 0
 def secValue(clearance):
     for n,i in enumerate(clearance):
         if i == 'SC':
@@ -13,56 +14,54 @@ def secValue(clearance):
         else:
             clearance[n] = 1
 
-#function scores anchor match
+#function ss anchor match
 
 def matchAnchor(skill):
     anchorMatch = []
     for anchor in anchorSkill:
-        score = 0
+        s = 0
         if anchor in items:
             score += 1.5
         else:
             score += 0.0
-        #add score to this b's anchor match list
-        anchorMatch.append(score)
+        #add s to this b's anchor match list
+        anchorMatch.append(s)
     #add b's anchor match list to the global matrix
     anchorMatrix.append(anchorMatch)
 """
-#function scores department match
+#function ss department match
 def matchDept(candDept,
 Dept):
     #for each item in the list of a departments...
     jobMatch = []
     if candDept
-        jobMatch.append(score)
+        jobMatch.append(s)
     deptMatrix.append(jobMatch)
 """
 
-def matchDept(a,b):
-
+def matchDept(p,c,s):
     score = 0.0
-    if a.department == b.wantedDept1:
+    #deptMatch = []
+    if p.department == c.wantedDept1:
         score += 1
-    elif a.department == b.wantedDept2:
+    elif p.department == c.wantedDept2:
         score += .9
-    elif a.department == b.wantedDept3:
+    elif p.department == c.wantedDept3:
         score += .8
-    elif a.department == b.wantedDept4:
+    elif p.department == c.wantedDept4:
         score += .7
-    elif a.department == b.wantedDept5:
+    elif p.department == c.wantedDept5:
         score += .6
-    elif a.department == b.wantedDept6:
+    elif p.department == c.wantedDept6:
         score += .5
-    elif a.department == b.wantedDept7:
+    elif p.department == c.wantedDept7:
         score += .4
-    elif a.department == b.wantedDept8:
+    elif p.department == c.wantedDept8:
         score += .3
-    elif a.department == b.wantedDept9:
+    elif p.department == c.wantedDept9:
         score += .2
-    elif a.department == b.wantedDept10:
+    elif p.department == c.wantedDept10:
         score += .1
     else:
         score += 0
-    return score
-    print(score)
-    deptMatch.append(score)
+    return(score)
