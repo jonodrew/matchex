@@ -14,34 +14,28 @@ def secValue(clearance):
         else:
             clearance[n] = 1
 
-#function ss anchor match
+#function gives anchor match
 
-def matchAnchor(skill):
-    anchorMatch = []
-    for anchor in anchorSkill:
-        s = 0
-        if anchor in items:
-            score += 1.5
-        else:
-            score += 0.0
-        #add s to this b's anchor match list
-        anchorMatch.append(s)
-    #add b's anchor match list to the global matrix
-    anchorMatrix.append(anchorMatch)
-"""
-#function ss department match
-def matchDept(candDept,
-Dept):
-    #for each item in the list of a departments...
-    jobMatch = []
-    if candDept
-        jobMatch.append(s)
-    deptMatrix.append(jobMatch)
-"""
-
-def matchDept(p,c,s):
+def matchAnchor(p,c):
     score = 0.0
-    #deptMatch = []
+    if p.anchor == c.wantedAnchor:
+        score += 1.7
+    if p.anchor == c.wantedAnchor2:
+        score += 0.8
+    return(score)
+
+def matchLocation(p,c):
+    score = 0.0
+    if c.restrictions == 'No' and p.location == c.wantedLocation:
+        score += 1.6
+    elif c.restrictions != 'No' and p.location == c.wantedLocation:
+        score += 7.0
+    elif c.restrictions != 'No' and p.location != c.wantedLocation:
+        score -= 10.0
+    return(score)
+
+def matchDept(p,c):
+    score = 0.0
     if p.department == c.wantedDept1:
         score += 1
     elif p.department == c.wantedDept2:
@@ -65,3 +59,12 @@ def matchDept(p,c,s):
     else:
         score += 0
     return(score)
+
+def matchSecurity(p,c):
+    pass
+
+def matchCompetency(p,c):
+    pass
+
+def matchSkill(p,c):
+    pass

@@ -1,7 +1,7 @@
 import csv
 import numpy as np
 import itertools
-from munkres import Munkres, print_matrix
+from munkres import Munkres, print_matrix, make_cost_matrix
 import sys
 from classes import *
 from functions import *
@@ -15,44 +15,59 @@ with open('/Users/java_jonathan/candidates.csv','r') as f:
     reader = csv.reader(f)
     candidatesAll = list(reader)
 
-#iterates over lists and produces the names of each candidate
-for list in candidatesAll:
-    candidate = Candidate(*list)
-    #print(candidate.name)
-    #print(candidate.priorDepartment)
-for list in postingsAll:
-    posting = Posting(*list)
-
+"""create empty lists to fill with lists of lists output by iterating function
+below"""
 deptMatrix = []
+anchorMatrix = []
+locationMatrix = []
 for list in candidatesAll:
     candidate = Candidate(*list)
     #stores score for each m posts across each candidate
     deptMatch = []
-
+    anchorMatch = []
+    locationMatch = []
     for list in postingsAll:
         posting = Posting(*list)
-        score = matchDept(posting,candidate,score)
+        #initisalise postings
+        score = matchDept(posting,candidate)
+        #append score to candidate's list
         deptMatch.append(score)
+        score = matchAnchor(posting,candidate)
+        anchorMatch.append(score)
+        score = matchLocation(posting,candidate)
+        locationMatch.append(score)
+
+    #append list to list of lists
     deptMatrix.append(deptMatch)
+    anchorMatrix.append(anchorMatch)
+    locationMatrix.append(locationMatch)
+#convert list of lists to matrix
 deptMatrix = np.matrix(deptMatrix)
+anchorMatrix = np.matrix(anchorMatrix)
+locationMatrix = np.matrix(locationMatrix)
 print(deptMatrix)
-    #print(deptMatch)
+print(anchorMatrix)
+totalMatrix = anchorMatrix + deptMatrix + locationMatrix
+print(totalMatrix)
+totalMatrix = np.subtract(10,totalMatrix)
+totalMatrix = np.array(totalMatrix)
+print(totalMatrix)
+
+
+
+m = Munkres()
+indexes = m.compute(totalMatrix)
+print_matrix(totalMatrix, msg='Lowest cost through this matrix:')
+total = 0.0
+for row, column in indexes:
+    value = totalMatrix[row][column]
+    total += value
+    print ('(%d, %d) -> %s' % (row, column, value))
+print 'total happiness: %s out of 100' % total
+
+
 
 """
-for list in postingsAll:
-    deptMatrix = []
-    posting = Posting(*list)
-    for list in candidatesAll:
-        deptMatch = []
-        candidate = Candidate(*list)
-        matchDept(posting,candidate)
-        print(deptMatch)
-
-
-    #print(posting.name)
-    #print(posting.department)
-
-
 #posting = [Posting(*postingsAll)]
 #print(posting[0].anchor)
 #print(posting)
@@ -74,17 +89,17 @@ postSecurity = [lists[10] for lists in postings]
 
 #with open('/Users/Jonathan/Google Drive/CPD/Python/candidates.csv','r') as f:
 
+
+
+
 """
-
-
-
 secValue(candSecurity)
 secValue(postSecurity)
 matchAnchor()
 #print(candSecurity)
-"""
 
-"""
+
+
 
 def matchSec():
     secMatch = []
@@ -109,7 +124,6 @@ secMatrix = []
 for cSec in candSecurity:
     matchSec()
 #turn lists of lists into np matrices
-
 
 
 
