@@ -1,3 +1,12 @@
+"""to avoid very lengthy code that covers every permutation of strings SC, DV etc
+we should valorise these levels"""
+def security_value(self,level):
+    if level == 'SC':
+        self.security = 3
+    elif level == 'DV':
+        self.security = 4
+    else:
+
 class Candidate(object):
 
     def __init__(self, name, priorDepartment, priorAnchor, priorSkill1,
@@ -35,24 +44,7 @@ class Candidate(object):
         self.restrictions = restrictions
         self.security = security
 
-    def security_value(self,level):
-        if level == 'SC':
-            self.security = 3
-        elif level == 'DV':
-            self.security = 4
-        else:
-            self.security = 0
 
-
-
-"""
-Jamie = ["Jamie", 'HMRC', 'Operational', 'Delivery, Digital', 'CTC']
-Jonathan = ["Jonathan", 'DWP', 'Operational', 'Delivery', 'CTC']
-candidate = [Candidate(*Jamie),
-             Candidate(*Jamie)]
-"""
-#print(candidate[0].skills)
-#print(candidate[1].name)
 
 class Posting(object):
 
