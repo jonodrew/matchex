@@ -49,7 +49,6 @@ for list in candidatesAll:
     competencyMatrix.append(competencyMatch)
 #convert list of lists to matrix
 deptMatrix = np.matrix(deptMatrix)
-print(deptMatrix)
 anchorMatrix = np.matrix(anchorMatrix)
 locationMatrix = np.matrix(locationMatrix)
 competencyMatrix = np.matrix(competencyMatrix)
@@ -66,7 +65,7 @@ totalMatrix = np.array(totalMatrix)
 
 m = Munkres()
 indexes = m.compute(totalMatrix)
-#print_matrix(totalMatrix, msg='Lowest cost through this matrix:')
+print_matrix(totalMatrix, msg='Lowest cost through this matrix:')
 total = 0.0
 for row, column in indexes:
     value = totalMatrix[row][column]

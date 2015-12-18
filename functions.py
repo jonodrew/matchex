@@ -19,9 +19,9 @@ def secValue(clearance):
 def matchAnchor(p,c):
     score = 0.0
     if p.anchor == c.wantedAnchor:
-        score += 1.7
+        score += 3.0
     if p.anchor == c.wantedAnchor2:
-        score += 0.8
+        score += 1.5
     return(score)
 
 def matchLocation(p,c):
@@ -53,7 +53,7 @@ def matchCompetency(p,c):
     posting_competencies = (p.competency1,p.competency2,p.competency3)
     for comp in posting_competencies:
         if comp in candidate_competencies:
-            score += 2
+            score += 3
     return(score)
 
 def matchSecurity(p,c):
