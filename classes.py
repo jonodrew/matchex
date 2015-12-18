@@ -69,3 +69,9 @@ class Posting(object):
         self.competency2 = competency2
         self.competency3 = competency3
         self.security = security
+"""
+class Weighting(object):
+
+    def __init__(self,department,anchor,skill,location,competency,restriction,
+    previous_location):
+"""

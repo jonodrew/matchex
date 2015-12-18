@@ -60,4 +60,14 @@ def matchSecurity(p,c):
     pass
 
 def matchSkill(p,c):
-    pass
+    score = 0.0
+    posting_skill = (p.skill1, p.skill2)
+    candidate_skill = [c.wantedSkill1, c.wantedSkill2]
+    for skill in posting_skill:
+        if skill == candidate_skill[0]:
+            score += 1
+        elif skill == candidate_skill[1]:
+            score += 0.5
+        else:
+            score = 0
+    return score

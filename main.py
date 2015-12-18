@@ -21,6 +21,7 @@ deptMatrix = []
 anchorMatrix = []
 locationMatrix = []
 competencyMatrix = []
+skillMatrix = []
 for list in candidatesAll:
     candidate = Candidate(*list)
     #stores score for each m posts across each candidate
@@ -28,6 +29,7 @@ for list in candidatesAll:
     anchorMatch = []
     locationMatch = []
     competencyMatch = []
+    skillMatch = []
     for list in postingsAll:
         posting = Posting(*list)
         #initisalise postings
@@ -41,18 +43,24 @@ for list in candidatesAll:
         score = matchCompetency(posting,candidate)
         #print(score)
         competencyMatch.append(score)
+        score = matchSkill(posting,candidate)
+        skillMatch.append(score)
 
     #append list to list of lists
     deptMatrix.append(deptMatch)
     anchorMatrix.append(anchorMatch)
     locationMatrix.append(locationMatch)
     competencyMatrix.append(competencyMatch)
+    skillMatrix.append(skillMatch)
 #convert list of lists to matrix
 deptMatrix = np.matrix(deptMatrix)
 anchorMatrix = np.matrix(anchorMatrix)
 locationMatrix = np.matrix(locationMatrix)
-competencyMatrix = np.matrix(competencyMatrix)
-totalMatrix = anchorMatrix + deptMatrix + locationMatrix + competencyMatrix
+competencyMatrix = np.multiply(np.matrix(competencyMatrix),1)
+skillMatrix = np.multiply(np.matrix(skillMatrix),1.0)
+print(skillMatrix)
+totalMatrix = anchorMatrix + deptMatrix + locationMatrix + competencyMatrix \
++ skillMatrix
 #at this point the matrix is structured as candidates down and jobs across
 totalMatrix = np.transpose(totalMatrix)
 #now it's switched!
