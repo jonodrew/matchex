@@ -6,12 +6,12 @@ import sys
 from classes import *
 from functions import *
 
-with open('/Users/java_jonathan/postings.csv','r') as f:
+with open('/Users/java_jonathan/postings_lge.csv','r') as f:
 #with open('/Users/Jonathan/Google Drive/CPD/Python/postings.csv','r') as f:
     reader = csv.reader(f)
     postingsAll = list(reader)
 
-with open('/Users/java_jonathan/candidates.csv','r') as f:
+with open('/Users/java_jonathan/candidates_lge.csv','r') as f:
     reader = csv.reader(f)
     candidatesAll = list(reader)
 
