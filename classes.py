@@ -35,7 +35,15 @@ class Candidate(object):
         self.restrictions = restrictions
         self.security = security
 
-    
+    def security_value(self,level):
+        if level == 'SC':
+            self.security = 3
+        elif level == 'DV':
+            self.security = 4
+        else:
+            self.security = 0
+
+
 
 """
 Jamie = ["Jamie", 'HMRC', 'Operational', 'Delivery, Digital', 'CTC']

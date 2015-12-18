@@ -42,16 +42,17 @@ for list in candidatesAll:
     anchorMatrix.append(anchorMatch)
     locationMatrix.append(locationMatch)
 #convert list of lists to matrix
-deptMatrix = np.matrix(deptMatrix)
+deptMatrix = np.transpose(np.matrix(deptMatrix))
 anchorMatrix = np.matrix(anchorMatrix)
 locationMatrix = np.matrix(locationMatrix)
-print(deptMatrix)
-print(anchorMatrix)
 totalMatrix = anchorMatrix + deptMatrix + locationMatrix
-print(totalMatrix)
+#at this point the matrix is structured as candidates down and jobs across
+totalMatrix = np.transpose(totalMatrix)
+#now it's switched!
+print(deptMatrix)
 totalMatrix = np.subtract(10,totalMatrix)
 totalMatrix = np.array(totalMatrix)
-print(totalMatrix)
+
 
 
 
