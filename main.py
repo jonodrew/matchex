@@ -6,12 +6,12 @@ import sys
 from classes import *
 from functions import *
 
-with open('/Users/java_jonathan/postings.csv','r') as f:
+with open('/Users/java_jonathan/postings_lge.csv','r') as f:
 #with open('/Users/Jonathan/Google Drive/CPD/Python/postings.csv','r') as f:
     reader = csv.reader(f)
     postingsAll = list(reader)
 
-with open('/Users/java_jonathan/candidates.csv','r') as f:
+with open('/Users/java_jonathan/candidates_lge.csv','r') as f:
     reader = csv.reader(f)
     candidatesAll = list(reader)
 
@@ -49,7 +49,6 @@ totalMatrix = anchorMatrix + deptMatrix + locationMatrix
 #at this point the matrix is structured as candidates down and jobs across
 totalMatrix = np.transpose(totalMatrix)
 #now it's switched!
-print(deptMatrix)
 totalMatrix = np.subtract(10,totalMatrix)
 totalMatrix = np.array(totalMatrix)
 
@@ -58,7 +57,7 @@ totalMatrix = np.array(totalMatrix)
 
 m = Munkres()
 indexes = m.compute(totalMatrix)
-print_matrix(totalMatrix, msg='Lowest cost through this matrix:')
+#print_matrix(totalMatrix, msg='Lowest cost through this matrix:')
 total = 0.0
 for row, column in indexes:
     value = totalMatrix[row][column]
