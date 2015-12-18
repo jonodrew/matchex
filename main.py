@@ -6,12 +6,12 @@ import sys
 from classes import *
 from functions import *
 
-with open('/Users/java_jonathan/postings_lge.csv','r') as f:
+with open('/Users/java_jonathan/postings.csv','r') as f:
 #with open('/Users/Jonathan/Google Drive/CPD/Python/postings.csv','r') as f:
     reader = csv.reader(f)
     postingsAll = list(reader)
 
-with open('/Users/java_jonathan/candidates_lge.csv','r') as f:
+with open('/Users/java_jonathan/candidates.csv','r') as f:
     reader = csv.reader(f)
     candidatesAll = list(reader)
 
@@ -20,12 +20,14 @@ below"""
 deptMatrix = []
 anchorMatrix = []
 locationMatrix = []
+competencyMatrix = []
 for list in candidatesAll:
     candidate = Candidate(*list)
     #stores score for each m posts across each candidate
     deptMatch = []
     anchorMatch = []
     locationMatch = []
+    competencyMatch = []
     for list in postingsAll:
         posting = Posting(*list)
         #initisalise postings
@@ -36,21 +38,27 @@ for list in candidatesAll:
         anchorMatch.append(score)
         score = matchLocation(posting,candidate)
         locationMatch.append(score)
+        score = matchCompetency(posting,candidate)
+        #print(score)
+        competencyMatch.append(score)
 
     #append list to list of lists
     deptMatrix.append(deptMatch)
     anchorMatrix.append(anchorMatch)
     locationMatrix.append(locationMatch)
+    competencyMatrix.append(competencyMatch)
 #convert list of lists to matrix
-deptMatrix = np.transpose(np.matrix(deptMatrix))
+deptMatrix = np.matrix(deptMatrix)
+print(deptMatrix)
 anchorMatrix = np.matrix(anchorMatrix)
 locationMatrix = np.matrix(locationMatrix)
-totalMatrix = anchorMatrix + deptMatrix + locationMatrix
+competencyMatrix = np.matrix(competencyMatrix)
+totalMatrix = anchorMatrix + deptMatrix + locationMatrix + competencyMatrix
 #at this point the matrix is structured as candidates down and jobs across
 totalMatrix = np.transpose(totalMatrix)
 #now it's switched!
-print(deptMatrix)
-totalMatrix = np.subtract(10,totalMatrix)
+#print(deptMatrix)
+totalMatrix = np.subtract(np.amax(totalMatrix),totalMatrix)
 totalMatrix = np.array(totalMatrix)
 
 
@@ -58,13 +66,13 @@ totalMatrix = np.array(totalMatrix)
 
 m = Munkres()
 indexes = m.compute(totalMatrix)
-print_matrix(totalMatrix, msg='Lowest cost through this matrix:')
+#print_matrix(totalMatrix, msg='Lowest cost through this matrix:')
 total = 0.0
 for row, column in indexes:
     value = totalMatrix[row][column]
     total += value
-    print ('(%d, %d) -> %s' % (row, column, value))
-print 'total happiness: %s out of 100' % total
+    print ('(%d, %d) -> %s' % (row+1, column+1, value))
+print 'total unhappiness: %s out of 100' % total
 
 
 

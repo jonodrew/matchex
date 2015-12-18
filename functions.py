@@ -36,34 +36,27 @@ def matchLocation(p,c):
 
 def matchDept(p,c):
     score = 0.0
-    if p.department == c.wantedDept1:
-        score += 1
-    elif p.department == c.wantedDept2:
-        score += .9
-    elif p.department == c.wantedDept3:
-        score += .8
-    elif p.department == c.wantedDept4:
-        score += .7
-    elif p.department == c.wantedDept5:
-        score += .6
-    elif p.department == c.wantedDept6:
-        score += .5
-    elif p.department == c.wantedDept7:
-        score += .4
-    elif p.department == c.wantedDept8:
-        score += .3
-    elif p.department == c.wantedDept9:
-        score += .2
-    elif p.department == c.wantedDept10:
-        score += .1
-    else:
-        score += 0
+    candidate_dept = (c.wantedDept1,c.wantedDept2,c.wantedDept3,c.wantedDept4,
+    c.wantedDept5,c.wantedDept6,c.wantedDept7,c.wantedDept8,c.wantedDept9,
+    c.wantedDept10)
+    value = 1.0
+    for dept in candidate_dept:
+        if p.department == dept:
+            score += value
+        else:
+            value -= 0.1
+    return(score)
+
+def matchCompetency(p,c):
+    score = 0.0
+    candidate_competencies = (c.wantedComp1,c.wantedComp2,c.wantedComp3)
+    posting_competencies = (p.competency1,p.competency2,p.competency3)
+    for comp in posting_competencies:
+        if comp in candidate_competencies:
+            score += 2
     return(score)
 
 def matchSecurity(p,c):
-    pass
-
-def matchCompetency(p,c):
     pass
 
 def matchSkill(p,c):
