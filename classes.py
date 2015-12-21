@@ -1,12 +1,12 @@
 """to avoid very lengthy code that covers every permutation of strings SC, DV etc
-we should valorise these levels"""
+we should valorise these levels
 def security_value(self,level):
     if level == 'SC':
         self.security = 3
     elif level == 'DV':
         self.security = 4
     else:
-
+"""
 class Candidate(object):
 
     def __init__(self, name, priorDepartment, priorAnchor, priorSkill1,
