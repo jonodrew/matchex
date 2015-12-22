@@ -53,7 +53,7 @@ for list in candidatesAll:
     competencyMatrix.append(competencyMatch)
     skillMatrix.append(skillMatch)
 #convert list of lists to matrix
-deptMatrix = np.matrix(deptMatrix)
+deptMatrix = np.multiply(np.matrix(deptMatrix),1)
 anchorMatrix = np.matrix(anchorMatrix)
 locationMatrix = np.matrix(locationMatrix)
 competencyMatrix = np.matrix(competencyMatrix)
@@ -67,9 +67,10 @@ totalMatrix = np.transpose(totalMatrix)
 totalMatrix = np.subtract(np.amax(totalMatrix),totalMatrix)
 totalMatrix = np.array(totalMatrix)
 
-maxHappy = 12.75*10
+maxHappy = 12.75*len(candidatesAll)
 
 check = []
+result = []
 m = Munkres()
 indexes = m.compute(totalMatrix)
 print_matrix(totalMatrix, msg='Lowest cost through this matrix:')
@@ -78,9 +79,11 @@ for row, column in indexes:
     value = totalMatrix[row][column]
     total += value
     check.append(column+1)
-    print ('(%d, %d) -> %s' % (row+1, column+1, value))
-print 'total unhappiness: %s out of %d' % (total,maxHappy)
-
+    result.append((row,column))
+    print ('(%d, %s) -> %s' % (row+1, candidatesAll[row][0], value))
+print('total unhappiness: %s out of %d' % (total,maxHappy))
+print(result)
+print((total/maxHappy)*100)
 #output from excel:
 correct = [1,3,5,9,10,2,4,8,6,7]
 

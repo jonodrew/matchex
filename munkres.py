@@ -579,7 +579,7 @@ def print_matrix(matrix, msg=None):
         msg : str
             Optional message to print before displaying the matrix
     """
-    print matrix
+    print (matrix)
 
 # ---------------------------------------------------------------------------
 # Main
