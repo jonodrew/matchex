@@ -23,7 +23,7 @@ def matchAnchor(p,c):
     elif p.anchor == c.wantedAnchor2:
         score += 0.75
     else:
-        score += 0
+        score -= 2.0
     return(score)
 
 def matchLocation(p,c):
@@ -73,5 +73,5 @@ def matchSkill(p,c):
         elif skill == candidate_skill[1]:
             score += 1.5
         else:
-            score -= 2.0
+            score -= 1.0
     return score
