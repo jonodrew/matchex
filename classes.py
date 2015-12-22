@@ -1,12 +1,12 @@
 """to avoid very lengthy code that covers every permutation of strings SC, DV etc
-we should valorise these levels"""
+we should valorise these levels
 def security_value(self,level):
     if level == 'SC':
         self.security = 3
     elif level == 'DV':
         self.security = 4
     else:
-
+"""
 class Candidate(object):
 
     def __init__(self, name, priorDepartment, priorAnchor, priorSkill1,
@@ -61,9 +61,14 @@ class Posting(object):
         self.competency2 = competency2
         self.competency3 = competency3
         self.security = security
-"""
+
 class Weighting(object):
 
     def __init__(self,department,anchor,skill,location,competency,restriction,
     previous_location):
-"""
+        self.department = department
+        self.anchor = anchor
+        self.skill = skill
+        self.location = location
+        self.competency = competency
+        self.previous_location = previous_location
