@@ -6,12 +6,12 @@ import sys
 from classes import *
 from functions import *
 
-with open('/Users/java_jonathan/postings_lge.csv','r') as f:
+with open('/Users/java_jonathan/postings.csv','r') as f:
 #with open('/Users/Jonathan/Google Drive/CPD/Python/postings.csv','r') as f:
     reader = csv.reader(f)
     postingsAll = list(reader)
 
-with open('/Users/java_jonathan/candidates_lge.csv','r') as f:
+with open('/Users/java_jonathan/candidates.csv','r') as f:
     reader = csv.reader(f)
     candidatesAll = list(reader)
 
@@ -69,7 +69,7 @@ print(totalMatrix)
 totalMatrix = np.subtract(np.amax(totalMatrix),totalMatrix)
 totalMatrix = np.array(totalMatrix)
 
-maxHappy = 29.55*len(candidatesAll)
+maxHappy = 27.55
 
 check = []
 result = []
@@ -79,21 +79,24 @@ print_matrix(totalMatrix, msg='Lowest cost through this matrix:')
 total = 0.0
 unhappy_candidates = 0
 medium_candidates = 0
+tenpc_candidates = 0
 for row, column in indexes:
     value = totalMatrix[row][column]
-    if value > 29.55/2:
-        unhappy_candidates +=1
-    elif value > 29.55/4:
+    if value > maxHappy/2:
+        unhappy_candidates += 1
+    elif value > maxHappy/4:
         medium_candidates += 1
+    elif value > maxHappy/10:
+        tenpc_candidates += 1
     total += value
     check.append(column+1)
     result.append((row,column))
     print ('(%d, %s) -> %s' % (row+1, candidatesAll[row][0], value))
-print('total unhappiness: %s out of %d' % (total,maxHappy))
 print(result)
 print((total/maxHappy)*100)
-print('Candidates who are more than 50 percent unhappy: %s' % unhappy_candidates)
-print('Candidates who are more than 25 percent unhappy: %s' % medium_candidates)
+print('Candidates who are more than 50 percent unsuitable: %s' % unhappy_candidates)
+print('Candidates who are more than 25 percent unsuitable: %s' % medium_candidates)
+print('Candidates who are more than 10 percent unsuitable: %s' % tenpc_candidates)
 #output from excel:
 correct = [1,3,5,9,10,2,4,8,6,7]
 
