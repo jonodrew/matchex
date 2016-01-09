@@ -98,8 +98,8 @@ for row, column in indexes:
     total += value
     check.append(column+1)
     result.append((row,column))
-    #print ('For position %d: \nOptimal candidate: %s (score %s)'
-    #% (row+1, candidatesAll[row][0], value))
+    print ('For position %d: \nOptimal candidate: %s (score %s)'
+    % (row+1, candidatesAll[row][0], value))
 globalSatisfaction = 100*(1-(total/(len(totalMatrix)*minSuitability)))
 print('Global satisfaction: %.2f%%' % globalSatisfaction)
 print('Candidates who are less than 50%% suitable: %d' % unhappy_candidates)
