@@ -75,3 +75,13 @@ def matchSkill(p,c):
         else:
             score -= 2.0
     return score
+
+def topMatch(total,top,names):
+    topMatrix = []
+    for row in top:
+        topNames = []
+        for value in row:
+            topNames.append(names[value])
+        topMatrix.append(topNames)
+    topMatrix = np.matrix(topMatrix)
+    return (topMatrix)

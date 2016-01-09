@@ -1,3 +1,5 @@
+from timeit import default_timer as timer
+start = timer()
 import csv
 import numpy as np
 import itertools
@@ -6,14 +8,18 @@ import sys
 from classes import *
 from functions import *
 
-with open('/Users/java_jonathan/postings.csv','r') as f:
+
+
+
+with open('/Users/java_jonathan/postings_lge.csv','r') as f:
 #with open('/Users/Jonathan/Google Drive/CPD/Python/postings.csv','r') as f:
     reader = csv.reader(f)
     postingsAll = list(reader)
 
-with open('/Users/java_jonathan/candidates.csv','r') as f:
+with open('/Users/java_jonathan/candidates_lge.csv','r') as f:
     reader = csv.reader(f)
     candidatesAll = list(reader)
+
 
 """create empty lists to fill with lists of lists output by iterating function
 below"""
@@ -22,8 +28,10 @@ anchorMatrix = []
 locationMatrix = []
 competencyMatrix = []
 skillMatrix = []
+names = []
 for list in candidatesAll:
     candidate = Candidate(*list)
+    names.append(candidate.name)
     #stores score for each m posts across each candidate
     deptMatch = []
     anchorMatch = []
@@ -41,7 +49,6 @@ for list in candidatesAll:
         score = matchLocation(posting,candidate)
         locationMatch.append(score)
         score = matchCompetency(posting,candidate)
-        #print(score)
         competencyMatch.append(score)
         score = matchSkill(posting,candidate)
         skillMatch.append(score)
@@ -58,13 +65,10 @@ anchorMatrix = np.matrix(anchorMatrix)
 locationMatrix = np.matrix(locationMatrix)
 competencyMatrix = np.matrix(competencyMatrix)
 skillMatrix = np.matrix(skillMatrix)
-#print(skillMatrix)
 totalMatrix = anchorMatrix + deptMatrix + locationMatrix + competencyMatrix \
 + skillMatrix
 #at this point the matrix is structured as candidates down and jobs across
 totalMatrix = np.transpose(totalMatrix)
-print(totalMatrix)
-#print(totalMatrix)
 #now it's switched!
 totalMatrix = np.subtract(np.amax(totalMatrix),totalMatrix)
 totalMatrix = np.array(totalMatrix)
@@ -91,15 +95,16 @@ for row, column in indexes:
     total += value
     check.append(column+1)
     result.append((row,column))
-    print ('(%d, %s) -> %s' % (row+1, candidatesAll[row][0], value))
-print(result)
+    print ('For position %d: \nOptimal candidate: %s (score %s)'
+    % (row+1, candidatesAll[row][0], value))
+#print(result)
 print((total/maxHappy)*100)
 print('Candidates who are more than 50 percent unsuitable: %s' % unhappy_candidates)
 print('Candidates who are more than 25 percent unsuitable: %s' % medium_candidates)
 print('Candidates who are more than 10 percent unsuitable: %s' % tenpc_candidates)
 #output from excel:
 correct = [1,3,5,9,10,2,4,8,6,7]
-
+"""
 #this function tests output above against Excel:
 def test(a,b):
     score = 0
@@ -111,6 +116,19 @@ def test(a,b):
     print('%d out of 10' % score)
 
 test(correct,check)
+"""
+num = 5
+top = np.argpartition(totalMatrix,num, axis = 1)[:,:num]
+topFive = np.array(totalMatrix[np.arange(totalMatrix.shape[0])[:, None],top])
+topMatrix = np.array(topMatch(totalMatrix,top,names))
+topMatrix = np.dstack((topMatrix,topFive))
+print(topMatrix)
+np.savetxt('test.csv',topMatrix, fmt='%s', delimiter=',',
+newline='\n', header='', footer='', comments='# ')
+np.savetxt('test2.csv',totalMatrix, fmt='%s', delimiter=',',
+newline='\n', header='', footer='', comments='# ')
+end = timer()
+print(end-start)
 """
 #posting = [Posting(*postingsAll)]
 #print(posting[0].anchor)
