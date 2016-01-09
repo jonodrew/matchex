@@ -70,6 +70,9 @@ totalMatrix = anchorMatrix + deptMatrix + locationMatrix + competencyMatrix \
 #at this point the matrix is structured as candidates down and jobs across
 totalMatrix = np.transpose(totalMatrix)
 #now it's switched!
+print(np.amax(totalMatrix))
+print(np.amin(totalMatrix))
+print(np.amax(totalMatrix)-np.amin(totalMatrix))
 totalMatrix = np.subtract(np.amax(totalMatrix),totalMatrix)
 totalMatrix = np.array(totalMatrix)
 
@@ -79,7 +82,7 @@ check = []
 result = []
 m = Munkres()
 indexes = m.compute(totalMatrix)
-print_matrix(totalMatrix, msg='Lowest cost through this matrix:')
+#print_matrix(totalMatrix, msg='Lowest cost through this matrix:')
 total = 0.0
 unhappy_candidates = 0
 medium_candidates = 0
@@ -95,8 +98,8 @@ for row, column in indexes:
     total += value
     check.append(column+1)
     result.append((row,column))
-    print ('For position %d: \nOptimal candidate: %s (score %s)'
-    % (row+1, candidatesAll[row][0], value))
+    #print ('For position %d: \nOptimal candidate: %s (score %s)'
+    #% (row+1, candidatesAll[row][0], value))
 globalSatisfaction = 100*(1-(total/(len(totalMatrix)*minSuitability)))
 print('Global satisfaction: %.2f%%' % globalSatisfaction)
 print('Candidates who are less than 50%% suitable: %d' % unhappy_candidates)
@@ -104,7 +107,7 @@ print('Candidates who are less than 33%% suitable: %d' % medium_candidates)
 print('Candidates who are less than 10%% suitable: %d' % tenpc_candidates)
 #output from excel:
 correct = [1,3,5,9,10,2,4,8,6,7]
-"""
+
 #this function tests output above against Excel:
 def test(a,b):
     score = 0
@@ -116,13 +119,13 @@ def test(a,b):
     print('%d out of 10' % score)
 
 test(correct,check)
-"""
+
 num = 5
 top = np.argpartition(totalMatrix,num, axis = 1)[:,:num]
 topFive = np.array(totalMatrix[np.arange(totalMatrix.shape[0])[:, None],top])
 topMatrix = np.array(topMatch(totalMatrix,top,names))
 topMatrix = np.dstack((topMatrix,topFive))
-print(topMatrix)
+#print(topMatrix)
 np.savetxt('test.csv',topMatrix, fmt='%s', delimiter=',',
 newline='\n', header='', footer='', comments='# ')
 np.savetxt('test2.csv',totalMatrix, fmt='%s', delimiter=',',

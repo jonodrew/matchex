@@ -16,16 +16,18 @@ def secValue(clearance):
 
 #function gives anchor match
 
+#highest score: 1.5
 def matchAnchor(p,c):
     score = 0.0
     if p.anchor == c.wantedAnchor:
         score += 1.5
     elif p.anchor == c.wantedAnchor2:
-        score += 0.75
+        score += 1.0
     else:
-        score += 0
+        score = 0
     return(score)
 
+#highest score: 5.0
 def matchLocation(p,c):
     score = 0.0
     if c.restrictions == 'No' and p.location == c.wantedLocation:
@@ -33,9 +35,10 @@ def matchLocation(p,c):
     elif c.restrictions != 'No' and p.location == c.wantedLocation:
         score += 5.0
     elif c.restrictions != 'No' and p.location != c.wantedLocation:
-        score -= 10.0
+        score += 0
     return(score)
 
+#highest score: 1.0
 def matchDept(p,c):
     score = 0.0
     candidate_dept = (c.wantedDept1,c.wantedDept2,c.wantedDept3,c.wantedDept4,
@@ -49,31 +52,33 @@ def matchDept(p,c):
             value -= 0.1
     return(score)
 
+#highest score: 2.25
 def matchCompetency(p,c):
     score = 0.0
     candidate_competencies = (c.wantedComp1,c.wantedComp2,c.wantedComp3)
     posting_competencies = (p.competency1,p.competency2,p.competency3)
     for comp in posting_competencies:
         if comp in candidate_competencies:
-            score += 0.75
+            score += 0.5
         else:
-            score -= 0.1
+            score += 0
     return(score)
 
 def matchSecurity(p,c):
     pass
 
+#highest score: 6
 def matchSkill(p,c):
     score = 0.0
     posting_skill = (p.skill1, p.skill2)
     candidate_skill = [c.wantedSkill1, c.wantedSkill2]
     for skill in posting_skill:
         if skill == candidate_skill[0]:
-            score += 3
+            score += 2.0
         elif skill == candidate_skill[1]:
             score += 1.5
         else:
-            score -= 2.0
+            score += 0.0
     return score
 
 def topMatch(total,top,names):
