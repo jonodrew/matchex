@@ -1,3 +1,4 @@
+from __future__ import division
 from timeit import default_timer as timer
 start = timer()
 import csv
@@ -7,7 +8,6 @@ from munkres import Munkres, print_matrix, make_cost_matrix
 import sys
 from classes import *
 from functions import *
-
 
 
 
@@ -73,8 +73,8 @@ totalMatrix = np.transpose(totalMatrix)
 totalMatrix = np.subtract(np.amax(totalMatrix),totalMatrix)
 totalMatrix = np.array(totalMatrix)
 
-maxHappy = 27.55
-
+minSuitability = np.amax(totalMatrix)
+print('Lowest satisfaction with role: %s' % minSuitability)
 check = []
 result = []
 m = Munkres()
@@ -86,22 +86,22 @@ medium_candidates = 0
 tenpc_candidates = 0
 for row, column in indexes:
     value = totalMatrix[row][column]
-    if value > maxHappy/2:
+    if value > minSuitability/2:
         unhappy_candidates += 1
-    elif value > maxHappy/4:
+    elif value > minSuitability*0.33:
         medium_candidates += 1
-    elif value > maxHappy/10:
+    elif value > minSuitability*0.1:
         tenpc_candidates += 1
     total += value
     check.append(column+1)
     result.append((row,column))
     print ('For position %d: \nOptimal candidate: %s (score %s)'
     % (row+1, candidatesAll[row][0], value))
-#print(result)
-print((total/maxHappy)*100)
-print('Candidates who are more than 50 percent unsuitable: %s' % unhappy_candidates)
-print('Candidates who are more than 25 percent unsuitable: %s' % medium_candidates)
-print('Candidates who are more than 10 percent unsuitable: %s' % tenpc_candidates)
+globalSatisfaction = 100*(1-(total/(len(totalMatrix)*minSuitability)))
+print('Global satisfaction: %.2f%%' % globalSatisfaction)
+print('Candidates who are less than 50%% suitable: %d' % unhappy_candidates)
+print('Candidates who are less than 33%% suitable: %d' % medium_candidates)
+print('Candidates who are less than 10%% suitable: %d' % tenpc_candidates)
 #output from excel:
 correct = [1,3,5,9,10,2,4,8,6,7]
 """
