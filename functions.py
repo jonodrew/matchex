@@ -52,7 +52,7 @@ def matchDept(p,c):
             value -= 0.1
     return(score)
 
-#highest score: 2.25
+#highest score: 1.5
 def matchCompetency(p,c):
     score = 0.0
     candidate_competencies = (c.wantedComp1,c.wantedComp2,c.wantedComp3)
@@ -67,16 +67,14 @@ def matchCompetency(p,c):
 def matchSecurity(p,c):
     pass
 
-#highest score: 6
+#highest score: 4
 def matchSkill(p,c):
     score = 0.0
     posting_skill = (p.skill1, p.skill2)
     candidate_skill = [c.wantedSkill1, c.wantedSkill2]
     for skill in posting_skill:
-        if skill == candidate_skill[0]:
+        if skill in candidate_skill:
             score += 2.0
-        elif skill == candidate_skill[1]:
-            score += 1.5
         else:
             score += 0.0
     return score
@@ -90,3 +88,12 @@ def topMatch(total,top,names):
         topMatrix.append(topNames)
     topMatrix = np.matrix(topMatrix)
     return (topMatrix)
+
+def test(a,b):
+    score = 0
+    for i in range(len(a)):
+        if a[i] == b[i]:
+            score += 1
+        else:
+            score += 0
+    print('%d out of 10' % score)

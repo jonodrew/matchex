@@ -11,12 +11,12 @@ from functions import *
 
 
 
-with open('/Users/java_jonathan/postings_lge.csv','r') as f:
+with open('/Users/java_jonathan/postings.csv','r') as f:
 #with open('/Users/Jonathan/Google Drive/CPD/Python/postings.csv','r') as f:
     reader = csv.reader(f)
     postingsAll = list(reader)
 
-with open('/Users/java_jonathan/candidates_lge.csv','r') as f:
+with open('/Users/java_jonathan/candidates.csv','r') as f:
     reader = csv.reader(f)
     candidatesAll = list(reader)
 
@@ -61,14 +61,21 @@ for list in candidatesAll:
     skillMatrix.append(skillMatch)
 #convert list of lists to matrix
 deptMatrix = np.multiply(np.matrix(deptMatrix),1)
+print(deptMatrix)
 anchorMatrix = np.matrix(anchorMatrix)
+print(anchorMatrix)
 locationMatrix = np.matrix(locationMatrix)
+print(locationMatrix)
 competencyMatrix = np.matrix(competencyMatrix)
+print(competencyMatrix)
 skillMatrix = np.matrix(skillMatrix)
+print(skillMatrix)
+
 totalMatrix = anchorMatrix + deptMatrix + locationMatrix + competencyMatrix \
 + skillMatrix
 #at this point the matrix is structured as candidates down and jobs across
 totalMatrix = np.transpose(totalMatrix)
+print(totalMatrix)
 #now it's switched!
 print(np.amax(totalMatrix))
 print(np.amin(totalMatrix))
@@ -76,7 +83,8 @@ print(np.amax(totalMatrix)-np.amin(totalMatrix))
 totalMatrix = np.subtract(np.amax(totalMatrix),totalMatrix)
 totalMatrix = np.array(totalMatrix)
 
-minSuitability = np.amax(totalMatrix)
+
+minSuitability = 13
 print('Lowest satisfaction with role: %s' % minSuitability)
 check = []
 result = []
@@ -87,14 +95,20 @@ total = 0.0
 unhappy_candidates = 0
 medium_candidates = 0
 tenpc_candidates = 0
+qs_candidates = 0
+vs_candidates = 0
 for row, column in indexes:
     value = totalMatrix[row][column]
-    if value > minSuitability/2:
-        unhappy_candidates += 1
-    elif value > minSuitability*0.33:
-        medium_candidates += 1
-    elif value > minSuitability*0.1:
+    if value > minSuitability*0.9:
         tenpc_candidates += 1
+    elif value > minSuitability*0.75:
+            medium_candidates += 1
+    elif value > minSuitability/2:
+        unhappy_candidates += 1
+    elif value > minSuitability*0.25:
+        qs_candidates += 1
+    elif value > minSuitability*0.1:
+        vs_candidates += 1
     total += value
     check.append(column+1)
     result.append((row,column))
@@ -102,22 +116,17 @@ for row, column in indexes:
     % (row+1, candidatesAll[row][0], value))
 globalSatisfaction = 100*(1-(total/(len(totalMatrix)*minSuitability)))
 print('Global satisfaction: %.2f%%' % globalSatisfaction)
-print('Candidates who are less than 50%% suitable: %d' % unhappy_candidates)
-print('Candidates who are less than 33%% suitable: %d' % medium_candidates)
-print('Candidates who are less than 10%% suitable: %d' % tenpc_candidates)
+print('Candidates who are more than 90%% suitable: %d' % vs_candidates)
+print('Candidates who are more than 75%% suitable: %d' % qs_candidates)
+print('Candidates who are more than 50%% suitable: %d' % (len(totalMatrix)-unhappy_candidates))
+print('Candidates who are more than 75%% unsuitable: %d' % medium_candidates)
+print('Candidates who are more than 90%% unsuitable: %d' % tenpc_candidates)
+
+
 #output from excel:
 correct = [1,3,5,9,10,2,4,8,6,7]
 
 #this function tests output above against Excel:
-def test(a,b):
-    score = 0
-    for i in range(len(a)):
-        if a[i] == b[i]:
-            score += 1
-        else:
-            score += 0
-    print('%d out of 10' % score)
-
 test(correct,check)
 
 num = 5
@@ -132,6 +141,7 @@ np.savetxt('test2.csv',totalMatrix, fmt='%s', delimiter=',',
 newline='\n', header='', footer='', comments='# ')
 end = timer()
 print(end-start)
+
 """
 #posting = [Posting(*postingsAll)]
 #print(posting[0].anchor)
