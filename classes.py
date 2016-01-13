@@ -14,7 +14,7 @@ class Candidate(object):
     wantedAnchor2,wantedSkill2,wantedComp1,wantedComp2,wantedComp3,wantedDept1,
     wantedDept2,wantedDept3,wantedDept4,wantedDept5,wantedDept6,wantedDept7,
     wantedDept8,wantedDept9,wantedDept10,secondment,wantedLocation,restrictions,
-    security):
+    security,cohort):
         self.name = name
         self.priorDepartment = priorDepartment
         self.priorAnchor = priorAnchor
@@ -43,13 +43,14 @@ class Candidate(object):
         self.wantedLocation = wantedLocation
         self.restrictions = restrictions
         self.security = security
+        self.cohort = cohort
 
 
 
 class Posting(object):
 
     def __init__(self, code, department, anchor, skill1, skill2, location, name,
-    competency1, competency2, competency3, security):
+    competency1, competency2, competency3, security, cohort):
         self.code = code
         self.department = department
         self.anchor = anchor
@@ -61,6 +62,7 @@ class Posting(object):
         self.competency2 = competency2
         self.competency3 = competency3
         self.security = security
+        self.cohort = cohort
 
 class Weighting(object):
 

@@ -8,8 +8,7 @@ from munkres import Munkres, print_matrix, make_cost_matrix
 import sys
 from classes import *
 from functions import *
-
-
+from math import sqrt
 
 with open('/Users/java_jonathan/postings_lge.csv','r') as f:
 #with open('/Users/Jonathan/Google Drive/CPD/Python/postings.csv','r') as f:
@@ -23,56 +22,21 @@ with open('/Users/java_jonathan/candidates_lge.csv','r') as f:
 
 """create empty lists to fill with lists of lists output by iterating function
 below"""
-deptMatrix = []
-anchorMatrix = []
-locationMatrix = []
-competencyMatrix = []
-skillMatrix = []
 names = []
+totalMatrix = []
 for list in candidatesAll:
     candidate = Candidate(*list)
     names.append(candidate.name)
     #stores score for each m posts across each candidate
-    deptMatch = []
-    anchorMatch = []
-    locationMatch = []
-    competencyMatch = []
-    skillMatch = []
     for list in postingsAll:
         posting = Posting(*list)
-        #initisalise postings
-        score = matchDept(posting,candidate)
-        #append score to candidate's list
-        deptMatch.append(score)
-        score = matchAnchor(posting,candidate)
-        anchorMatch.append(score)
-        score = matchLocation(posting,candidate)
-        locationMatch.append(score)
-        score = matchCompetency(posting,candidate)
-        competencyMatch.append(score)
-        score = matchSkill(posting,candidate)
-        skillMatch.append(score)
-        print(timer()-start)
-    #append list to list of lists
-    deptMatrix.append(deptMatch)
-    anchorMatrix.append(anchorMatch)
-    locationMatrix.append(locationMatch)
-    competencyMatrix.append(competencyMatch)
-    skillMatrix.append(skillMatch)
-#convert list of lists to matrix
-deptMatrix = np.multiply(np.matrix(deptMatrix),1)
-#print(deptMatrix)
-anchorMatrix = np.matrix(anchorMatrix)
-#print(anchorMatrix)
-locationMatrix = np.matrix(locationMatrix)
-#print(locationMatrix)
-competencyMatrix = np.matrix(competencyMatrix)
-#print(competencyMatrix)
-skillMatrix = np.matrix(skillMatrix)
-#print(skillMatrix)
+        totalMatrix.append(matchDept(posting,candidate) + matchAnchor(posting,candidate)
+        +matchLocation(posting,candidate) + matchCompetency(posting,candidate) +
+        matchSkill(posting,candidate)+matchCohort(posting,candidate))
+totalMatrix = np.asarray(totalMatrix)
+n = sqrt(len(totalMatrix))
+totalMatrix = np.reshape(totalMatrix,(n,n))
 
-totalMatrix = anchorMatrix + deptMatrix + locationMatrix + competencyMatrix \
-+ skillMatrix
 #at this point the matrix is structured as candidates down and jobs across
 totalMatrix = np.transpose(totalMatrix)
 #print(totalMatrix)
@@ -85,12 +49,11 @@ totalMatrix = np.array(totalMatrix)
 
 
 minSuitability = 13
-print('Lowest satisfaction with role: %s' % minSuitability)
 check = []
 result = []
 m = Munkres()
 indexes = m.compute(totalMatrix)
-print_matrix(totalMatrix, msg='Lowest cost through this matrix:')
+#print_matrix(totalMatrix, msg='Lowest cost through this matrix:')
 total = 0.0
 unhappy_candidates = 0
 medium_candidates = 0

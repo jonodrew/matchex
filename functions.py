@@ -98,3 +98,8 @@ def test(a,b):
         else:
             score += 0
     print('%d out of 10' % score)
+def matchCohort(p,c):
+    score = 0
+    if p.cohort == c.cohort:
+        score += 5
+    return score
