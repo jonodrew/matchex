@@ -80,7 +80,15 @@ def matchSkill(p,c):
             score += 0.0
     return score
 
-
+def topMatch(total,top,names):
+    topMatrix = []
+    for row in top:
+        topNames = []
+        for value in row:
+            topNames.append(names[value])
+        topMatrix.append(topNames)
+    topMatrix = np.matrix(topMatrix)
+    return (topMatrix)
 
 def test(a,b):
     score = 0
@@ -97,20 +105,10 @@ def matchCohort(p,c):
         score += 5
     return score
 
-def topMatch(total,top,names):
-
-    for row in top:
-        topNames = []
-        for value in row:
-            topNames.append(names[value])
-        topMatrix.append(topNames)
-    topMatrix = np.matrix(topMatrix)
-    return (topMatrix)
-
-def topFive(m,names):
-    topMatrix = []
+def topFive(names, total):
     num = 5
-    top = np.argpartition(m,num, axis = 1)[:,:num]
-    topFive = np.array(m[np.arange(m.shape[0])[:, None],top])
-    topMatrix = np.array(topMatch(m,top,names))
+    top = np.argpartition(total,num, axis = 1)[:,:num]
+    topFive = np.array(total[np.arange(total.shape[0])[:, None],top])
+    topMatrix = np.array(topMatch(total,top,names))
     topMatrix = np.dstack((topMatrix,topFive))
+    return topMatrix

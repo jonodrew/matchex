@@ -10,12 +10,12 @@ from classes import *
 from functions import *
 from math import sqrt
 
-with open('/Users/java_jonathan/postings.csv','r') as f:
+with open('/Users/java_jonathan/postings_lge.csv','r') as f:
 #with open('/Users/Jonathan/Google Drive/CPD/Python/postings.csv','r') as f:
     reader = csv.reader(f)
     postingsAll = list(reader)
 
-with open('/Users/java_jonathan/candidates.csv','r') as f:
+with open('/Users/java_jonathan/candidates_lge.csv','r') as f:
     reader = csv.reader(f)
     candidatesAll = list(reader)
 
@@ -92,11 +92,10 @@ print('Candidates who are more than 90%% unsuitable: %d' % tenpc_candidates)
 correct = [1,3,5,9,10,2,4,8,6,7]
 
 #this function tests output above against Excel:
-test(correct,check)
-topFive(totalMatrix,names)
-
+#test(correct,check)
+topMatrix = topFive(names,totalMatrix)
 #print(topMatrix)
-np.savetxt('test.csv',topMatrix, fmt='%s', delimiter=',',
+np.savetxt('top_five.csv',topMatrix, fmt='%s', delimiter=',',
 newline='\n', header='', footer='', comments='# ')
 np.savetxt('test2.csv',totalMatrix, fmt='%s', delimiter=',',
 newline='\n', header='', footer='', comments='# ')
