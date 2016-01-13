@@ -1,0 +1,400 @@
+For candidate Tyler  Dawson: 
+Optimal position: 194 (score 5.4)
+For candidate Ibrahim  Page: 
+Optimal position: 148 (score 4.8)
+For candidate Jessica  Cross: 
+Optimal position: 200 (score 4.8)
+For candidate Amber  Ryan: 
+Optimal position: 198 (score 5.1)
+For candidate Jack  Bennett: 
+Optimal position: 199 (score 0.0)
+For candidate Leon  Robertson: 
+Optimal position: 197 (score 5.3)
+For candidate Reuben  Hunt: 
+Optimal position: 176 (score 4.3)
+For candidate Sophie  Ball: 
+Optimal position: 118 (score 4.8)
+For candidate Oliver  Robinson: 
+Optimal position: 190 (score 4.8)
+For candidate Ava  Jenkins: 
+Optimal position: 195 (score 2.8)
+For candidate Benjamin  Wright: 
+Optimal position: 196 (score 3.3)
+For candidate Layla  Wells: 
+Optimal position: 172 (score 6.3)
+For candidate Ollie  James: 
+Optimal position: 192 (score 6.3)
+For candidate Evelyn  Elliott: 
+Optimal position: 184 (score 4.8)
+For candidate Connor  Owen: 
+Optimal position: 185 (score 2.8)
+For candidate Matthew  Grant: 
+Optimal position: 186 (score 3.3)
+For candidate Leon  Robertson: 
+Optimal position: 47 (score 5.3)
+For candidate Reuben  Saunders: 
+Optimal position: 174 (score 5.4)
+For candidate David  Berry: 
+Optimal position: 188 (score 4.8)
+For candidate Francesca  Matthews: 
+Optimal position: 170 (score 4.8)
+For candidate Thea  Hopkins: 
+Optimal position: 175 (score 2.8)
+For candidate Evie  Watts: 
+Optimal position: 179 (score 0.0)
+For candidate Caleb  Bates: 
+Optimal position: 169 (score 1.8)
+For candidate Amber  Khan: 
+Optimal position: 132 (score 6.3)
+For candidate Sophie  Murray: 
+Optimal position: 182 (score 6.3)
+For candidate Annabelle  Gregory: 
+Optimal position: 180 (score 4.8)
+For candidate Jean Tirole: 
+Optimal position: 158 (score 5.1)
+For candidate May-Britt Moser: 
+Optimal position: 156 (score 3.3)
+For candidate Scarlett  Hall: 
+Optimal position: 51 (score 1.8)
+For candidate Felix  Hayes: 
+Optimal position: 162 (score 6.3)
+For candidate Katie  Armstrong: 
+Optimal position: 140 (score 4.8)
+For candidate Kailash Satyarthi: 
+Optimal position: 155 (score 2.8)
+For candidate Liam  Green: 
+Optimal position: 146 (score 3.3)
+For candidate Frederick  Hamilton: 
+Optimal position: 149 (score 1.8)
+For candidate Freddie  Jones: 
+Optimal position: 61 (score 1.8)
+For candidate Lewis  Woods: 
+Optimal position: 178 (score 4.8)
+For candidate David  Dixon: 
+Optimal position: 134 (score 4.8)
+For candidate Sofia  Bates: 
+Optimal position: 187 (score 4.6)
+For candidate Sarah  Clarke: 
+Optimal position: 96 (score 3.3)
+For candidate Maria  Butler: 
+Optimal position: 147 (score 5.3)
+For candidate Harriet  Perry: 
+Optimal position: 71 (score 1.8)
+For candidate Bella  Kennedy: 
+Optimal position: 168 (score 4.8)
+For candidate Shuji Nakamura: 
+Optimal position: 160 (score 4.8)
+For candidate Eliza  Walker: 
+Optimal position: 145 (score 2.8)
+For candidate Robyn  Long: 
+Optimal position: 189 (score 0.0)
+For candidate Summer  Dawson: 
+Optimal position: 137 (score 5.3)
+For candidate Jenson  Morgan: 
+Optimal position: 102 (score 6.3)
+For candidate Hiroshi Amano: 
+Optimal position: 152 (score 6.3)
+For candidate Finlay  Davis: 
+Optimal position: 164 (score 4.8)
+For candidate Hollie  Spencer: 
+Optimal position: 115 (score 2.8)
+For candidate Emilia  Walker: 
+Optimal position: 166 (score 3.3)
+For candidate Matilda  Wood: 
+Optimal position: 117 (score 5.3)
+For candidate Sarah  Hamilton: 
+Optimal position: 91 (score 1.8)
+For candidate Stanley  Taylor: 
+Optimal position: 138 (score 4.8)
+For candidate Patrick Modiano: 
+Optimal position: 154 (score 4.8)
+For candidate Gracie  Spencer: 
+Optimal position: 105 (score 2.8)
+For candidate Malala Yousafzai: 
+Optimal position: 159 (score 0.0)
+For candidate Sophia  Cooper: 
+Optimal position: 107 (score 5.3)
+For candidate Louis  Morris: 
+Optimal position: 101 (score 1.8)
+For candidate Zara  Stevens: 
+Optimal position: 123 (score 4.3)
+For candidate Elizabeth  Berry: 
+Optimal position: 142 (score 6.3)
+For candidate Ethan  Gibson: 
+Optimal position: 124 (score 4.8)
+For candidate James  Moore: 
+Optimal position: 177 (score 4.6)
+For candidate Lily  Francis: 
+Optimal position: 139 (score 0.0)
+For candidate Isabel  Carter: 
+Optimal position: 111 (score 1.8)
+For candidate Harry  Shah: 
+Optimal position: 93 (score 4.3)
+For candidate Isla  Baker: 
+Optimal position: 122 (score 6.3)
+For candidate Evie  Bradley: 
+Optimal position: 144 (score 4.8)
+For candidate Jenson  Porter: 
+Optimal position: 167 (score 4.6)
+For candidate Katie  Cole: 
+Optimal position: 136 (score 3.3)
+For candidate Robert  Baker: 
+Optimal position: 121 (score 1.8)
+For candidate Isabel  Miller: 
+Optimal position: 103 (score 4.3)
+For candidate Sonny  Khan: 
+Optimal position: 112 (score 6.3)
+For candidate Robert  Hawkins: 
+Optimal position: 150 (score 4.8)
+For candidate Luke  Turner: 
+Optimal position: 165 (score 2.8)
+For candidate Lacey  Dawson: 
+Optimal position: 129 (score 0.0)
+For candidate Ella  Gray: 
+Optimal position: 131 (score 1.8)
+For candidate Esme  Woods: 
+Optimal position: 143 (score 4.3)
+For candidate Sophia  Mason: 
+Optimal position: 98 (score 4.8)
+For candidate Logan  Harrison: 
+Optimal position: 114 (score 4.8)
+For candidate William Moerner: 
+Optimal position: 157 (score 4.6)
+For candidate Gracie  Lane: 
+Optimal position: 126 (score 3.3)
+For candidate Nancy  Morgan: 
+Optimal position: 69 (score 1.8)
+For candidate Sebastian  Stewart: 
+Optimal position: 141 (score 1.8)
+For candidate Bethany  Khan: 
+Optimal position: 133 (score 4.3)
+For candidate Joshua  Robinson: 
+Optimal position: 92 (score 6.3)
+For candidate Maisie  Kelly: 
+Optimal position: 104 (score 4.8)
+For candidate Teddy  Riley: 
+Optimal position: 135 (score 2.8)
+For candidate Adam  Mcdonald: 
+Optimal position: 66 (score 3.3)
+For candidate John O'Keefe: 
+Optimal position: 151 (score 1.8)
+For candidate Eric Betzig: 
+Optimal position: 153 (score 4.3)
+For candidate Thea  Kaur: 
+Optimal position: 128 (score 4.8)
+For candidate Rosie  Dixon: 
+Optimal position: 130 (score 4.8)
+For candidate Esme  Phillips: 
+Optimal position: 95 (score 2.8)
+For candidate Aaron  Ward: 
+Optimal position: 119 (score 0.0)
+For candidate James  Edwards: 
+Optimal position: 161 (score 1.8)
+For candidate Violet  Page: 
+Optimal position: 163 (score 4.3)
+For candidate Sofia  Long: 
+Optimal position: 68 (score 4.8)
+For candidate Stanley  Murray: 
+Optimal position: 120 (score 4.8)
+For candidate Toby  Davies: 
+Optimal position: 127 (score 4.6)
+For candidate Hannah  Ball: 
+Optimal position: 56 (score 3.3)
+For candidate Mollie  Turner: 
+Optimal position: 67 (score 5.3)
+For candidate Evelyn  Parsons: 
+Optimal position: 171 (score 1.8)
+For candidate Emily  Webb: 
+Optimal position: 183 (score 4.3)
+For candidate Jamie  Cross: 
+Optimal position: 88 (score 4.8)
+For candidate Hannah  Williamson: 
+Optimal position: 100 (score 6.8)
+For candidate Imogen  Butler: 
+Optimal position: 110 (score 4.8)
+For candidate Benjamin  Smith: 
+Optimal position: 125 (score 2.8)
+For candidate Matthew  Grant: 
+Optimal position: 36 (score 3.3)
+For candidate Dylan  Kaur: 
+Optimal position: 59 (score 1.8)
+For candidate Reuben  Barker: 
+Optimal position: 181 (score 1.8)
+For candidate Willow  Harding: 
+Optimal position: 173 (score 4.3)
+For candidate Ibrahim  Lee: 
+Optimal position: 108 (score 4.8)
+For candidate Charlotte  Baker: 
+Optimal position: 90 (score 6.8)
+For candidate Oscar  Robinson: 
+Optimal position: 94 (score 4.8)
+For candidate James  Campbell: 
+Optimal position: 97 (score 4.6)
+For candidate Erin  Gill: 
+Optimal position: 116 (score 3.3)
+For candidate Zoe  Scott: 
+Optimal position: 191 (score 1.8)
+For candidate Isabel  Price: 
+Optimal position: 73 (score 4.3)
+For candidate Sara  Lawrence: 
+Optimal position: 82 (score 6.3)
+For candidate Gabriel  Parry: 
+Optimal position: 84 (score 4.8)
+For candidate Daisy  Murphy: 
+Optimal position: 85 (score 2.8)
+For candidate Freddie  Andrews: 
+Optimal position: 109 (score 0.0)
+For candidate Charlie  Lowe: 
+Optimal position: 57 (score 5.3)
+For candidate Gracie  Williamson: 
+Optimal position: 81 (score 1.8)
+For candidate Brooke  Knight: 
+Optimal position: 63 (score 4.3)
+For candidate Emma  Ross: 
+Optimal position: 78 (score 4.8)
+For candidate Gabriel  Clarke: 
+Optimal position: 80 (score 6.8)
+For candidate Jessica  Cross: 
+Optimal position: 50 (score 4.8)
+For candidate Noah  Murray: 
+Optimal position: 55 (score 2.8)
+For candidate Mohammad  Bishop: 
+Optimal position: 106 (score 3.3)
+For candidate Nathan  Mitchell: 
+Optimal position: 52 (score 6.3)
+For candidate Ruby  Mills: 
+Optimal position: 43 (score 4.3)
+For candidate Amelie  Robinson: 
+Optimal position: 72 (score 6.3)
+For candidate Francesca  Matthews: 
+Optimal position: 20 (score 4.8)
+For candidate Ava  Jenkins: 
+Optimal position: 45 (score 2.8)
+For candidate Reuben  Hunt: 
+Optimal position: 26 (score 3.3)
+For candidate Jack  Bennett: 
+Optimal position: 49 (score 1.8)
+For candidate Zoe  Scott: 
+Optimal position: 41 (score 1.8)
+For candidate Emily  Webb: 
+Optimal position: 33 (score 4.3)
+For candidate Charlie  Carr: 
+Optimal position: 62 (score 6.3)
+For candidate Isaac  West: 
+Optimal position: 74 (score 4.8)
+For candidate Georgia  Walsh: 
+Optimal position: 58 (score 5.1)
+For candidate Sonny  Gill: 
+Optimal position: 99 (score 0.0)
+For candidate Robyn  Long: 
+Optimal position: 39 (score 1.8)
+For candidate Layla  Wells: 
+Optimal position: 22 (score 6.3)
+For candidate Willow  Harding: 
+Optimal position: 23 (score 4.3)
+For candidate William  Taylor: 
+Optimal position: 75 (score 3.8)
+For candidate Ollie  James: 
+Optimal position: 42 (score 6.3)
+For candidate Georgia  Foster: 
+Optimal position: 70 (score 4.8)
+For candidate Amber  Ryan: 
+Optimal position: 48 (score 5.1)
+For candidate Ellie  Murphy: 
+Optimal position: 89 (score 0.0)
+For candidate Evelyn  Parsons: 
+Optimal position: 21 (score 1.8)
+For candidate Ruby  Mills: 
+Optimal position: 193 (score 4.3)
+For candidate David  Berry: 
+Optimal position: 38 (score 4.8)
+For candidate Harry  Mills: 
+Optimal position: 60 (score 4.8)
+For candidate Theo  Thompson: 
+Optimal position: 87 (score 4.6)
+For candidate Amelie  Berry: 
+Optimal position: 86 (score 3.3)
+For candidate Sofia  Bates: 
+Optimal position: 37 (score 5.3)
+For candidate Reuben  Barker: 
+Optimal position: 31 (score 1.8)
+For candidate Freya  Hughes: 
+Optimal position: 113 (score 4.3)
+For candidate Ibrahim  Davis: 
+Optimal position: 79 (score 0.8)
+For candidate Oliver  Robinson: 
+Optimal position: 40 (score 6.8)
+For candidate Charlotte  Russell: 
+Optimal position: 64 (score 4.8)
+For candidate Connor  Owen: 
+Optimal position: 35 (score 2.8)
+For candidate Teddy  Day: 
+Optimal position: 76 (score 3.3)
+For candidate Evie  Watts: 
+Optimal position: 29 (score 1.8)
+For candidate Felix  Hayes: 
+Optimal position: 12 (score 6.3)
+For candidate Violet  Page: 
+Optimal position: 13 (score 4.3)
+For candidate Jackson  Owen: 
+Optimal position: 65 (score 3.8)
+For candidate Sophie  Murray: 
+Optimal position: 32 (score 6.3)
+For candidate Shuji Nakamura: 
+Optimal position: 10 (score 6.8)
+For candidate Evelyn  Elliott: 
+Optimal position: 34 (score 4.8)
+For candidate Lewis  Woods: 
+Optimal position: 28 (score 5.1)
+For candidate Reuben  Saunders: 
+Optimal position: 24 (score 4.8)
+For candidate Francesca  Barnes: 
+Optimal position: 77 (score 5.3)
+For candidate James  Edwards: 
+Optimal position: 11 (score 1.8)
+For candidate Lydia  Hudson: 
+Optimal position: 83 (score 4.3)
+For candidate Thea  Hopkins: 
+Optimal position: 25 (score 3.8)
+For candidate Hiroshi Amano: 
+Optimal position: 2 (score 6.3)
+For candidate Finlay  Davis: 
+Optimal position: 14 (score 4.8)
+For candidate James  Moore: 
+Optimal position: 27 (score 4.6)
+For candidate May-Britt Moser: 
+Optimal position: 6 (score 3.3)
+For candidate Caleb  Bates: 
+Optimal position: 19 (score 1.8)
+For candidate John O'Keefe: 
+Optimal position: 1 (score 1.8)
+For candidate Eric Betzig: 
+Optimal position: 3 (score 4.3)
+For candidate Bella  Kennedy: 
+Optimal position: 18 (score 4.8)
+For candidate Annabelle  Gregory: 
+Optimal position: 30 (score 6.8)
+For candidate Patrick Modiano: 
+Optimal position: 4 (score 4.8)
+For candidate Jean Tirole: 
+Optimal position: 8 (score 5.1)
+For candidate Emilia  Walker: 
+Optimal position: 16 (score 3.3)
+For candidate William Moerner: 
+Optimal position: 7 (score 5.3)
+For candidate Benjamin  Wright: 
+Optimal position: 46 (score 4.3)
+For candidate Maria  Powell: 
+Optimal position: 53 (score 4.3)
+For candidate Kailash Satyarthi: 
+Optimal position: 5 (score 3.8)
+For candidate Malala Yousafzai: 
+Optimal position: 9 (score 0.8)
+For candidate Sarah  Newman: 
+Optimal position: 54 (score 4.8)
+For candidate Luke  Turner: 
+Optimal position: 15 (score 2.8)
+For candidate Tyler  Dawson: 
+Optimal position: 44 (score 4.8)
+For candidate Jenson  Porter: 
+Optimal position: 17 (score 5.3)
