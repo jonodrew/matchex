@@ -11,12 +11,12 @@ from functions import *
 
 
 
-with open('/Users/java_jonathan/postings.csv','r') as f:
+with open('/Users/java_jonathan/postings_lge.csv','r') as f:
 #with open('/Users/Jonathan/Google Drive/CPD/Python/postings.csv','r') as f:
     reader = csv.reader(f)
     postingsAll = list(reader)
 
-with open('/Users/java_jonathan/candidates.csv','r') as f:
+with open('/Users/java_jonathan/candidates_lge.csv','r') as f:
     reader = csv.reader(f)
     candidatesAll = list(reader)
 
@@ -52,7 +52,7 @@ for list in candidatesAll:
         competencyMatch.append(score)
         score = matchSkill(posting,candidate)
         skillMatch.append(score)
-
+        print(timer()-start)
     #append list to list of lists
     deptMatrix.append(deptMatch)
     anchorMatrix.append(anchorMatch)
@@ -61,25 +61,25 @@ for list in candidatesAll:
     skillMatrix.append(skillMatch)
 #convert list of lists to matrix
 deptMatrix = np.multiply(np.matrix(deptMatrix),1)
-print(deptMatrix)
+#print(deptMatrix)
 anchorMatrix = np.matrix(anchorMatrix)
-print(anchorMatrix)
+#print(anchorMatrix)
 locationMatrix = np.matrix(locationMatrix)
-print(locationMatrix)
+#print(locationMatrix)
 competencyMatrix = np.matrix(competencyMatrix)
-print(competencyMatrix)
+#print(competencyMatrix)
 skillMatrix = np.matrix(skillMatrix)
-print(skillMatrix)
+#print(skillMatrix)
 
 totalMatrix = anchorMatrix + deptMatrix + locationMatrix + competencyMatrix \
 + skillMatrix
 #at this point the matrix is structured as candidates down and jobs across
 totalMatrix = np.transpose(totalMatrix)
-print(totalMatrix)
+#print(totalMatrix)
 #now it's switched!
-print(np.amax(totalMatrix))
-print(np.amin(totalMatrix))
-print(np.amax(totalMatrix)-np.amin(totalMatrix))
+#print(np.amax(totalMatrix))
+#print(np.amin(totalMatrix))
+#print(np.amax(totalMatrix)-np.amin(totalMatrix))
 totalMatrix = np.subtract(np.amax(totalMatrix),totalMatrix)
 totalMatrix = np.array(totalMatrix)
 
@@ -90,7 +90,7 @@ check = []
 result = []
 m = Munkres()
 indexes = m.compute(totalMatrix)
-#print_matrix(totalMatrix, msg='Lowest cost through this matrix:')
+print_matrix(totalMatrix, msg='Lowest cost through this matrix:')
 total = 0.0
 unhappy_candidates = 0
 medium_candidates = 0
@@ -112,8 +112,8 @@ for row, column in indexes:
     total += value
     check.append(column+1)
     result.append((row,column))
-    print ('For position %d: \nOptimal candidate: %s (score %s)'
-    % (row+1, candidatesAll[row][0], value))
+    print ('For candidate %s: \nOptimal position: %d (score %s)\n'
+    % (candidatesAll[column][0], column+1, value))
 globalSatisfaction = 100*(1-(total/(len(totalMatrix)*minSuitability)))
 print('Global satisfaction: %.2f%%' % globalSatisfaction)
 print('Candidates who are more than 90%% suitable: %d' % vs_candidates)

@@ -32,10 +32,10 @@ def matchLocation(p,c):
     score = 0.0
     if c.restrictions == 'No' and p.location == c.wantedLocation:
         score += 1.0
-    elif c.restrictions != 'No' and p.location == c.wantedLocation:
-        score += 5.0
     elif c.restrictions != 'No' and p.location != c.wantedLocation:
         score += 0
+    elif c.restrictions != 'No' and p.location == c.wantedLocation:
+        score += 5.0
     return(score)
 
 #highest score: 1.0
@@ -48,6 +48,7 @@ def matchDept(p,c):
     for dept in candidate_dept:
         if p.department == dept:
             score += value
+            break
         else:
             value -= 0.1
     return(score)
