@@ -89,7 +89,12 @@ def topMatch(total,top,names):
         topMatrix.append(topNames)
     topMatrix = np.matrix(topMatrix)
     return (topMatrix)
-
+def matchCohort(p,c):
+    score = 0
+    if p.cohort == c.cohort:
+        score += 5
+    return score
+    
 def test(a,b):
     score = 0
     for i in range(len(a)):
@@ -98,12 +103,6 @@ def test(a,b):
         else:
             score += 0
     print('%d out of 10' % score)
-
-def matchCohort(p,c):
-    score = 0
-    if p.cohort == c.cohort:
-        score += 5
-    return score
 
 def topFive(names, total):
     num = 5

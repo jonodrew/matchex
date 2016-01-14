@@ -52,13 +52,13 @@ result = []
 m = Munkres()
 indexes = m.compute(totalMatrix)
 #print_matrix(totalMatrix, msg='Lowest cost through this matrix:')
+f = open('output.txt', 'w')
 total = 0.0
 unhappy_candidates = 0
 medium_candidates = 0
 tenpc_candidates = 0
 qs_candidates = 0
 vs_candidates = 0
-f = open('output.txt', 'w')
 for row, column in indexes:
     if column < l:
         value = totalMatrix[row][column]
@@ -95,6 +95,7 @@ correct = [1,3,5,9,10,2,4,8,6,7]
 #test(correct,check)
 topMatrix = topFive(names,totalMatrix)
 #print(topMatrix)
+#creates user-friendly files
 np.savetxt('top_five.csv',topMatrix, fmt='%s', delimiter=',',
 newline='\n', header='', footer='', comments='# ')
 np.savetxt('test2.csv',totalMatrix, fmt='%s', delimiter=',',
