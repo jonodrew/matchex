@@ -10,18 +10,12 @@ from classes import *
 from functions import *
 from math import sqrt
 
-"""for use with /users/java_jonathan/postings_lge.csv and
-/Users/java_jonathan/candidates_lge.csv"""
-
-p_file = raw_input("Please enter the path for the postings file: ")
-c_file = raw_input("Please enter the path for the candidate file: ")
-
-with open(p_file,'r') as f:
+with open('/Users/java_jonathan/postings_lge.csv','r') as f:
 #with open('/Users/Jonathan/Google Drive/CPD/Python/postings.csv','r') as f:
     reader = csv.reader(f)
     postingsAll = list(reader)
 
-with open(c_file,'r') as f:
+with open('/Users/java_jonathan/candidates_lge.csv','r') as f:
     reader = csv.reader(f)
     candidatesAll = list(reader)
 
@@ -83,6 +77,7 @@ for row, column in indexes:
         result.append((row,column))
         f.write('For candidate %s: \nOptimal position: %d (score %s)\n'
         % (names[column], column+1, value))
+        f.write
     else:
         pass
 globalSatisfaction = 100*(1-(total/(l*minSuitability)))
