@@ -95,9 +95,10 @@ correct = [1,3,5,9,10,2,4,8,6,7]
 #test(correct,check)
 topMatrix = topFive(names,totalMatrix)
 #print(topMatrix)
-np.savetxt('top_five.csv',topMatrix, fmt='%s', delimiter=',',
+
+np.savetxt('/Users/java_jonathan/test.csv',topMatrix, fmt='%s', delimiter=',',
 newline='\n', header='', footer='', comments='# ')
-np.savetxt('test2.csv',totalMatrix, fmt='%s', delimiter=',',
+np.savetxt('/Users/java_jonathan/test2.csv',totalMatrix, fmt='%s', delimiter=',',
 newline='\n', header='', footer='', comments='# ')
 end = timer()
 print(end-start)
