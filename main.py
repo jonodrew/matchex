@@ -98,9 +98,9 @@ topFive = np.array(totalMatrix[np.arange(totalMatrix.shape[0])[:, None],top])
 topMatrix = np.array(topMatch(totalMatrix,top,names))
 topMatrix = np.dstack((topMatrix,topFive))
 #print(topMatrix)
-np.savetxt('test.csv',topMatrix, fmt='%s', delimiter=',',
+np.savetxt('/Users/java_jonathan/test.csv',topMatrix, fmt='%s', delimiter=',',
 newline='\n', header='', footer='', comments='# ')
-np.savetxt('test2.csv',totalMatrix, fmt='%s', delimiter=',',
+np.savetxt('/Users/java_jonathan/test2.csv',totalMatrix, fmt='%s', delimiter=',',
 newline='\n', header='', footer='', comments='# ')
 end = timer()
 print(end-start)
