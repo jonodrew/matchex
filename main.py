@@ -9,11 +9,18 @@ import sys
 from classes import *
 from functions import *
 from math import sqrt
+import Tkinter as tk
+import tkFileDialog as filedialog
+
+root = tk.Tk()
+root.withdraw()
+p_file = filedialog.askopenfilename()
+
 
 """for use with /users/java_jonathan/postings_lge.csv and
 /Users/java_jonathan/candidates_lge.csv"""
 
-p_file = raw_input("Please enter the path for the postings file: ")
+#p_file = raw_input("Please enter the path for the postings file: ")
 c_file = raw_input("Please enter the path for the candidate file: ")
 
 with open(p_file,'r') as f:
