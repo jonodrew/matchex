@@ -27,28 +27,26 @@ totalMatrix = []
 for list in candidatesAll:
     candidate = Candidate(*list)
     names.append(candidate.name)
-    #stores score for each m posts across each candidate
+    n = 0
     for list in postingsAll:
         posting = Posting(*list)
         totalMatrix.append(matchDept(posting,candidate) + matchAnchor(posting,candidate)
         +matchLocation(posting,candidate) + matchCompetency(posting,candidate) +
         matchSkill(posting,candidate)+matchCohort(posting,candidate))
-totalMatrix = np.asarray(totalMatrix)
-n = sqrt(len(totalMatrix))
-totalMatrix = np.reshape(totalMatrix,(n,n))
+        n += 1
+l = len(names)
+names.extend([0] * (n-l))
 
+totalMatrix.extend([0] * (n**2 - len(totalMatrix)))
+totalMatrix = np.asarray(totalMatrix)
+
+totalMatrix = np.reshape(totalMatrix,(n,-1))
 #at this point the matrix is structured as candidates down and jobs across
 totalMatrix = np.transpose(totalMatrix)
-#print(totalMatrix)
 #now it's switched!
-#print(np.amax(totalMatrix))
-#print(np.amin(totalMatrix))
-#print(np.amax(totalMatrix)-np.amin(totalMatrix))
 totalMatrix = np.subtract(np.amax(totalMatrix),totalMatrix)
 totalMatrix = np.array(totalMatrix)
-
-
-minSuitability = 13
+minSuitability = 18
 check = []
 result = []
 m = Munkres()
@@ -60,45 +58,44 @@ medium_candidates = 0
 tenpc_candidates = 0
 qs_candidates = 0
 vs_candidates = 0
+f = open('output.txt', 'w')
 for row, column in indexes:
-    value = totalMatrix[row][column]
-    if value > minSuitability*0.9:
-        tenpc_candidates += 1
-    elif value > minSuitability*0.75:
-            medium_candidates += 1
-    elif value > minSuitability/2:
-        unhappy_candidates += 1
-    elif value > minSuitability*0.25:
-        qs_candidates += 1
-    elif value > minSuitability*0.1:
-        vs_candidates += 1
-    total += value
-    check.append(column+1)
-    result.append((row,column))
-    print ('For candidate %s: \nOptimal position: %d (score %s)\n'
-    % (candidatesAll[column][0], column+1, value))
-globalSatisfaction = 100*(1-(total/(len(totalMatrix)*minSuitability)))
+    if column < l:
+        value = totalMatrix[row][column]
+        if value > minSuitability*0.9:
+            tenpc_candidates += 1
+        elif value > minSuitability*0.75:
+                medium_candidates += 1
+        elif value > minSuitability/2:
+            unhappy_candidates += 1
+        elif value > minSuitability*0.25:
+            qs_candidates += 1
+        elif value > minSuitability*0.1:
+            vs_candidates += 1
+        total += value
+        check.append(column+1)
+        result.append((row,column))
+        f.write('For candidate %s: \nOptimal position: %d (score %s)\n'
+        % (names[column], column+1, value))
+        f.write
+    else:
+        pass
+globalSatisfaction = 100*(1-(total/(l*minSuitability)))
 print('Global satisfaction: %.2f%%' % globalSatisfaction)
 print('Candidates who are more than 90%% suitable: %d' % vs_candidates)
 print('Candidates who are more than 75%% suitable: %d' % qs_candidates)
-print('Candidates who are more than 50%% suitable: %d' % (len(totalMatrix)-unhappy_candidates))
+print('Candidates who are more than 50%% suitable: %d' % (l-unhappy_candidates))
 print('Candidates who are more than 75%% unsuitable: %d' % medium_candidates)
 print('Candidates who are more than 90%% unsuitable: %d' % tenpc_candidates)
-
 
 #output from excel:
 correct = [1,3,5,9,10,2,4,8,6,7]
 
 #this function tests output above against Excel:
-test(correct,check)
-
-num = 5
-top = np.argpartition(totalMatrix,num, axis = 1)[:,:num]
-topFive = np.array(totalMatrix[np.arange(totalMatrix.shape[0])[:, None],top])
-topMatrix = np.array(topMatch(totalMatrix,top,names))
-topMatrix = np.dstack((topMatrix,topFive))
+#test(correct,check)
+topMatrix = topFive(names,totalMatrix)
 #print(topMatrix)
-np.savetxt('/Users/java_jonathan/test.csv',topMatrix, fmt='%s', delimiter=',',
+np.savetxt('top_five.csv',topMatrix, fmt='%s', delimiter=',',
 newline='\n', header='', footer='', comments='# ')
 np.savetxt('/Users/java_jonathan/test2.csv',totalMatrix, fmt='%s', delimiter=',',
 newline='\n', header='', footer='', comments='# ')

@@ -74,3 +74,9 @@ class Weighting(object):
         self.location = location
         self.competency = competency
         self.previous_location = previous_location
+
+class ReturnValue(object):
+  def __init__(self, y0, y1, y2):
+     self.y0 = y0
+     self.y1 = y1
+     self.y2 = y2
