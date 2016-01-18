@@ -1,6 +1,5 @@
 from __future__ import division
 from timeit import default_timer as timer
-start = timer()
 import csv
 import numpy as np
 import itertools
@@ -9,15 +8,23 @@ import sys
 from classes import *
 from functions import *
 from math import sqrt
+import Tkinter as tk
+import tkFileDialog as filedialog
+
+root = tk.Tk()
+root.withdraw()
+p_file = filedialog.askopenfilename(title='Please select the posting file')
+c_file = filedialog.askopenfilename(title='Please select the candidate file')
+
 
 """for use with /users/java_jonathan/postings_lge.csv and
 /Users/java_jonathan/candidates_lge.csv"""
 
-p_file = raw_input("Please enter the path for the postings file: ")
-p_file = p_file.strip()
-c_file = raw_input("Please enter the path for the candidate file: ")
-c_file = c_file.strip()
-
+# p_file = raw_input("Please enter the path for the postings file: ")
+# p_file = p_file.strip()
+# c_file = raw_input("Please enter the path for the candidate file: ")
+# c_file = c_file.strip()
+start = timer()
 with open(p_file,'r') as f:
 #with open('/Users/Jonathan/Google Drive/CPD/Python/postings.csv','r') as f:
     reader = csv.reader(f)
