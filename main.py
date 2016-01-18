@@ -1,6 +1,5 @@
 from __future__ import division
 from timeit import default_timer as timer
-start = timer()
 import csv
 import numpy as np
 import itertools
@@ -9,13 +8,32 @@ import sys
 from classes import *
 from functions import *
 from math import sqrt
+import Tkinter as tk
+import tkFileDialog as filedialog
 
-with open('/Users/java_jonathan/postings_lge.csv','r') as f:
+root = tk.Tk()
+root.withdraw()
+p_file = filedialog.askopenfilename(title='Please select the posting file')
+c_file = filedialog.askopenfilename(title='Please select the candidate file')
+matrix_path = filedialog.askdirectory(title='Matrix output path')
+output_path = filedialog.askdirectory(title='Optimised match output')
+
+
+
+"""for use with /users/java_jonathan/postings_lge.csv and
+/Users/java_jonathan/candidates_lge.csv"""
+
+# p_file = raw_input("Please enter the path for the postings file: ")
+# p_file = p_file.strip()
+# c_file = raw_input("Please enter the path for the candidate file: ")
+# c_file = c_file.strip()
+start = timer()
+with open(p_file,'r') as f:
 #with open('/Users/Jonathan/Google Drive/CPD/Python/postings.csv','r') as f:
     reader = csv.reader(f)
     postingsAll = list(reader)
 
-with open('/Users/java_jonathan/candidates_lge.csv','r') as f:
+with open(c_file,'r') as f:
     reader = csv.reader(f)
     candidatesAll = list(reader)
 
@@ -58,7 +76,7 @@ medium_candidates = 0
 tenpc_candidates = 0
 qs_candidates = 0
 vs_candidates = 0
-f = open('output.txt', 'w')
+f = open(output_path+'/output.txt', 'w')
 for row, column in indexes:
     if column < l:
         value = totalMatrix[row][column]
@@ -77,7 +95,6 @@ for row, column in indexes:
         result.append((row,column))
         f.write('For candidate %s: \nOptimal position: %d (score %s)\n'
         % (names[column], column+1, value))
-        f.write
     else:
         pass
 globalSatisfaction = 100*(1-(total/(l*minSuitability)))
@@ -95,9 +112,10 @@ correct = [1,3,5,9,10,2,4,8,6,7]
 #test(correct,check)
 topMatrix = topFive(names,totalMatrix)
 #print(topMatrix)
-np.savetxt('top_five.csv',topMatrix, fmt='%s', delimiter=',',
+
+np.savetxt(matrix_path+'/top_five.csv',topMatrix, fmt='%s', delimiter=',',
 newline='\n', header='', footer='', comments='# ')
-np.savetxt('/Users/java_jonathan/test2.csv',totalMatrix, fmt='%s', delimiter=',',
+np.savetxt(matrix_path+'/full_matrix.csv',totalMatrix, fmt='%s', delimiter=',',
 newline='\n', header='', footer='', comments='# ')
 end = timer()
 print(end-start)
