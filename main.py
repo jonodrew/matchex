@@ -14,7 +14,9 @@ from math import sqrt
 /Users/java_jonathan/candidates_lge.csv"""
 
 p_file = raw_input("Please enter the path for the postings file: ")
+p_file = p_file.strip()
 c_file = raw_input("Please enter the path for the candidate file: ")
+c_file = c_file.strip()
 
 with open(p_file,'r') as f:
 #with open('/Users/Jonathan/Google Drive/CPD/Python/postings.csv','r') as f:
