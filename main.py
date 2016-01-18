@@ -76,7 +76,7 @@ medium_candidates = 0
 tenpc_candidates = 0
 qs_candidates = 0
 vs_candidates = 0
-f = open(output_path+'output.txt', 'w')
+f = open(output_path+'/output.txt', 'w')
 for row, column in indexes:
     if column < l:
         value = totalMatrix[row][column]
@@ -109,7 +109,7 @@ print('Candidates who are more than 90%% unsuitable: %d' % tenpc_candidates)
 correct = [1,3,5,9,10,2,4,8,6,7]
 
 #this function tests output above against Excel:
-test(correct,check)
+#test(correct,check)
 topMatrix = topFive(names,totalMatrix)
 #print(topMatrix)
 
