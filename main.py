@@ -15,6 +15,9 @@ root = tk.Tk()
 root.withdraw()
 p_file = filedialog.askopenfilename(title='Please select the posting file')
 c_file = filedialog.askopenfilename(title='Please select the candidate file')
+matrix_path = filedialog.askdirectory(title='Matrix output path')
+output_path = filedialog.askdirectory(title='Optimised match output')
+
 
 
 """for use with /users/java_jonathan/postings_lge.csv and
@@ -73,7 +76,7 @@ medium_candidates = 0
 tenpc_candidates = 0
 qs_candidates = 0
 vs_candidates = 0
-f = open('output.txt', 'w')
+f = open(output_path+'output.txt', 'w')
 for row, column in indexes:
     if column < l:
         value = totalMatrix[row][column]
@@ -106,13 +109,13 @@ print('Candidates who are more than 90%% unsuitable: %d' % tenpc_candidates)
 correct = [1,3,5,9,10,2,4,8,6,7]
 
 #this function tests output above against Excel:
-#test(correct,check)
+test(correct,check)
 topMatrix = topFive(names,totalMatrix)
 #print(topMatrix)
 
 np.savetxt('/Users/java_jonathan/test.csv',topMatrix, fmt='%s', delimiter=',',
 newline='\n', header='', footer='', comments='# ')
-np.savetxt('/Users/java_jonathan/test2.csv',totalMatrix, fmt='%s', delimiter=',',
+np.savetxt(matrix_path+'/full_matrix.csv',totalMatrix, fmt='%s', delimiter=',',
 newline='\n', header='', footer='', comments='# ')
 end = timer()
 print(end-start)
